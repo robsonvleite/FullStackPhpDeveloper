@@ -56,6 +56,16 @@ fullStackPHPClassSession("comparação", __LINE__);
  */
 fullStackPHPClassSession("lógicos", __LINE__);
 
+    $logicA = true;
+    $logicB = false;
+    $logic = [
+        "a && b" => ($logicA && $logicB),
+        "a || b" => ($logicA || $logicB),
+        "a" => ($logicA),
+        "! a" => (!$logicA),
+        "! b" => (!$logicB),
+    ];
+    var_dump($logic);
 
 /**
  * [ aritiméticos ] https://php.net/manual/pt_BR/language.operators.arithmetic.php
