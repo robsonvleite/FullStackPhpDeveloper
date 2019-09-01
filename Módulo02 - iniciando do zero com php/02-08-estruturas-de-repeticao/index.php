@@ -44,6 +44,17 @@ fullStackPHPClassSession("for", __LINE__);
  */
 fullStackPHPClassSession("break, continue", __LINE__);
 
+    for ($c = 1; $c <= 10; $c++) {
+        if ($c % 2 == 1) {
+            continue;
+        }
+
+        if ($c >= 10) {
+            break;
+        }
+
+        echo "<p>Pulou + 2 :: {$c}</p>";
+    }
 
 /**
  * [ foreach ] https://php.net/manual/pt_BR/control-structures.foreach.php
