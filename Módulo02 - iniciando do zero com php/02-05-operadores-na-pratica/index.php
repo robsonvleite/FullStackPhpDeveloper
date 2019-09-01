@@ -35,6 +35,21 @@ fullStackPHPClassSession("atribuição", __LINE__);
  */
 fullStackPHPClassSession("comparação", __LINE__);
 
+    $relatedA = 5;
+    $relatedB = "5";
+    $relatedC = 10;
+    $related = [
+        "a == b" => ($relatedA == $relatedB),
+        "a === b" => ($relatedA === $relatedB),
+        "a != b" => ($relatedA != $relatedB),
+        "a !== b" => ($relatedA !== $relatedB),
+        "a > c" => ($relatedA > $relatedC),
+        "a < c" => ($relatedA < $relatedC),
+        "a >= b" => ($relatedA >= $relatedB),
+        "a >= c" => ($relatedA >= $relatedC),
+        "a <= c" => ($relatedA <= $relatedC),
+    ];
+    var_dump($related);
 
 /**
  * [ lógicos ] https://php.net/manual/pt_BR/language.operators.logical.php
