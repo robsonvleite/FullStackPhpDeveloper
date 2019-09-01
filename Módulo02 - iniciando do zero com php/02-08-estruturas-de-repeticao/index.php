@@ -60,3 +60,18 @@ fullStackPHPClassSession("break, continue", __LINE__);
  * [ foreach ] https://php.net/manual/pt_BR/control-structures.foreach.php
  */
 fullStackPHPClassSession("foreach", __LINE__);
+
+    $array = [];
+    for ($ar = 0; $ar <= 2; $ar++) {
+        $array[] = $ar;
+    }
+
+    var_dump($array);
+
+    foreach ($array as $item) {
+        var_dump($item);
+    }
+
+    foreach ($array as $key => $value) {
+        var_dump("{$key} = {$value}");
+    }
