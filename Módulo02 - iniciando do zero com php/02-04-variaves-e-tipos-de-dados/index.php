@@ -71,6 +71,15 @@ fullStackPHPClassSession("tipo boleano", __LINE__);
  */
 fullStackPHPClassSession("tipo callback", __LINE__);
 
+$code = "<article><h1>Um Call User Function!</h1></article>";
+// Retira as tags envolvidas no template
+$codeClear = call_user_func("strip_tags", $code);
+var_dump($code, $codeClear);
+
+$codeMore = function ($code) {
+    var_dump($code);
+};
+$codeMore("#BoraProgramar!");
 
 /**
  * [ outros tipos ] string | array | objeto | numérico | null
