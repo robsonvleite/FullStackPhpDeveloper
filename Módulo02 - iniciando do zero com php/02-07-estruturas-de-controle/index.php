@@ -60,7 +60,7 @@ fullStackPHPClassSession("isset, empty, !", __LINE__);
     if (!empty($rockAndRoll)) {
         var_dump("Rock existe e toca {$rockAndRoll}");
     } else {
-        var_dump("Não exite ou não está tocando!");
+        var_dump("Não existe ou não está tocando!");
     }
 
 /*
@@ -68,6 +68,24 @@ fullStackPHPClassSession("isset, empty, !", __LINE__);
  */
 fullStackPHPClassSession("switch", __LINE__);
 
+    $payment = "credit_card";
 
-
-
+    switch ($payment) {
+        case "billet_printed":
+            var_dump("Boleto Impresso");
+            break;
+        case 'canceled':
+            var_dump("Pagamento Cancelado");
+            break;
+        case 'past_due':
+        case 'pending':
+            var_dump("Aguardando Pagamento");
+            break;
+        case 'approved':
+        case 'completed':
+            var_dump("Pagamento aprovado");
+            break;
+        default:
+            var_dump("Erro ao processar pagamento!");
+            break;
+    };
