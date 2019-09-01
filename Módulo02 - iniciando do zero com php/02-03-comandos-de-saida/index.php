@@ -23,7 +23,7 @@ fullStackPHPClassSession("echo", __LINE__);
     echo "<h4>{$hello} {$code}</h4>";
 
     echo '<h3>' . $hello . " " . $code . "</h3>";
-    
+
     ?>
 
     <h4><?= $hello; ?> <?= $code; ?></h4>
@@ -35,6 +35,11 @@ fullStackPHPClassSession("echo", __LINE__);
  */
 fullStackPHPClassSession("print", __LINE__);
 
+    //print $hello, $code;
+    print $hello;
+    print $code;
+
+    print "<h3>{$hello} {$code}</h3>";
 
 /**
  * [ print_r ] https://php.net/manual/pt_BR/function.print-r.php
