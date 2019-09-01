@@ -71,3 +71,14 @@ fullStackPHPClassSession("lógicos", __LINE__);
  * [ aritiméticos ] https://php.net/manual/pt_BR/language.operators.arithmetic.php
  */
 fullStackPHPClassSession("aritiméticos", __LINE__);
+
+    $calcA = 5;
+    $calcB = 10;
+    $calc = [
+        "a + b" => ($calcA + $calcB),
+        "a - b" => ($calcA - $calcB),
+        "a * b" => ($calcA * $calcB),
+        "a / b" => ($calcA / $calcB),
+        "a % b" => ($calcA % $calcB),
+    ];
+    var_dump($calc);
