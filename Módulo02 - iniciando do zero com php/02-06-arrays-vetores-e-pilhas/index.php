@@ -43,6 +43,18 @@ fullStackPHPClassSession("associative array", __LINE__);
  */
 fullStackPHPClassSession("multidimensional array", __LINE__);
 
+    $brian = ["Brian", "Mic"];
+    $angus = ["name" => "Angus", "intrument" => "Guitar"];
+    $instruments = [
+        $brian,
+        $angus
+    ];
+    var_dump($instruments);
+
+    var_dump([
+        "brian" => $brian,
+        "angus" => $angus
+    ]);
 
 /**
  * [ array access ] foreach(array as item) || foreach(array as key => value)
