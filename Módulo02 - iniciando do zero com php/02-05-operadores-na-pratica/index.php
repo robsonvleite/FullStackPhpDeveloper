@@ -8,6 +8,27 @@ echo fullStackPHPClassName("02.05 - Operadores na prática");
  */
 fullStackPHPClassSession("atribuição", __LINE__);
 
+    $operatorA = 5;
+    $operators = [
+        "a += 5" => ($operatorA += 5),
+        "a -= 5" => ($operatorA -= 5),
+        "a *- 5" => ($operatorA *= 5),
+        "a /= 5" => ($operatorA /= 5)
+    ];
+    var_dump($operators);
+
+
+    $incrementA = 5;
+    $incrementB = 5;
+    $increment = [
+        "pós-incremento" => $incrementA++,
+        "res-incremento" => $incrementA,
+        "pré-incremento" => ++$incrementA,
+        "pós-decremento" => $incrementB--,
+        "res-decremento" => $incrementB,
+        "pré-decremento" => --$incrementB,
+    ];
+    var_dump($increment);
 
 /**
  * [ comparação ] https://php.net/manual/pt_BR/language.operators.comparison.php
