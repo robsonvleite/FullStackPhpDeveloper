@@ -83,3 +83,9 @@ fullStackPHPClassSession("vprintf", __LINE__);
  * [ var_dump ] https://php.net/manual/pt_BR/function.var-dump.php
  */
 fullStackPHPClassSession("var_dump", __LINE__);
+
+    var_dump(
+        $array,
+        $hello,
+        $company
+    );
