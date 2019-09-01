@@ -75,6 +75,9 @@ fullStackPHPClassSession("printf", __LINE__);
  */
 fullStackPHPClassSession("vprintf", __LINE__);
 
+    $company = "<article><h1>Escola %s</h1><p>Curso <b>%s</b>, aula <b>%s</b></p></article>";
+    vprintf($company, $array);
+    echo vsprintf($company, $array);
 
 /**
  * [ var_dump ] https://php.net/manual/pt_BR/function.var-dump.php
