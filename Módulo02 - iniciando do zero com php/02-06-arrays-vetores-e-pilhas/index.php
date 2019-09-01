@@ -61,3 +61,45 @@ fullStackPHPClassSession("multidimensional array", __LINE__);
  */
 fullStackPHPClassSession("array access", __LINE__);
 
+    $acdc = [
+        "band" => "AC/DC",
+        "vocal" => "Brian",
+        "solo_guitar" => "Angus",
+        "base_guitar" => "Malcolm",
+        "bass_guitar" => "Cliff",
+        "drums" => "Phil",
+    ];
+
+    echo "<p>O vocal da banda AC/DC é {$acdc["vocal"]}, e junto com {$acdc['solo_guitar']} fazem um ótimo show de rock!</p>";
+
+    $pearl = [
+        "band" => "Pearl Jam",
+        "vocal" => "Eddie",
+        "solo_guitar" => "Mike",
+        "base_guitar" => "Stone",
+        "bass_guitar" => "Jeff",
+        "drums" => "Jack",
+    ];
+
+    $rockBands = [
+        "acdc" => $acdc,
+        "pearl_jam" => $pearl
+    ];
+
+    var_dump($rockBands);
+
+    echo "<p>{$rockBands['pearl_jam']['vocal']}</p>";
+
+    foreach ($acdc as $item) {
+        echo "<p>{$item}</p>";
+    }
+
+    foreach ($acdc as $key => $value) {
+        echo "<p>{$value} is a {$key} of band!</p>";
+    }
+
+
+    foreach ($rockBands as $rockBand) {
+        $art = "<article><h1>%s</h1><p>%s</p><p>%s</p><p>%s</p><p>%s</p><p>%s</p></article>";
+        vprintf($art, $rockBand);
+    }
