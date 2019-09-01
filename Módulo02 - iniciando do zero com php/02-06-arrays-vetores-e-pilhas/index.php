@@ -12,7 +12,6 @@ fullStackPHPClassSession("index array", __LINE__);
 
     var_dump($arrA);
 
-
     $arrayIndex = [
         "Brian",
         "Angus",
@@ -28,6 +27,16 @@ fullStackPHPClassSession("index array", __LINE__);
  */
 fullStackPHPClassSession("associative array", __LINE__);
 
+    $arrayAssoc = [
+        "vocal" => "Brian",
+        "solo_guitar" => "Angus",
+        "base_guitar" => "Malcolm",
+        "bass_guitar" => "Cliff"
+    ];
+    $arrayAssoc["drums"] = "Phil";
+    $arrayAssoc["rock_band"] = "AC/DC";
+
+    var_dump($arrayAssoc);
 
 /**
  * [ multidimensional array ] "key" => ["key" => "value"]
