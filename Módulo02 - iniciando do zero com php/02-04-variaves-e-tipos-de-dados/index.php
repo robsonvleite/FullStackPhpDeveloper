@@ -44,6 +44,27 @@ fullStackPHPClassSession("variáveis", __LINE__);
  */
 fullStackPHPClassSession("tipo boleano", __LINE__);
 
+    $true = true;
+    $false = false;
+
+    var_dump($true, $false);
+
+    $bestAge = ($userAge > 50);
+    var_dump($bestAge);
+
+    $a = 0;
+    $b = 0.0;
+    $c = "";
+    $d = [];
+    $e = null;
+
+    var_dump($a, $b, $c, $d, $e);
+
+    if ($a || $b || $c || $d || $e) {
+        var_dump(true);
+    } else {
+        var_dump(false);
+    }
 
 /**
  * [ tipo callback ] call | closure
