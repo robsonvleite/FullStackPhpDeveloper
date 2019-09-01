@@ -34,6 +34,9 @@ fullStackPHPClassSession("while, do while", __LINE__);
  */
 fullStackPHPClassSession("for", __LINE__);
 
+    for ($i = 1; $i <= 10; $i++) {
+        echo "<p>{$i}</p>";
+    }
 
 /**
  * [ break ] https://php.net/manual/pt_BR/control-structures.break.php
