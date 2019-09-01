@@ -46,6 +46,15 @@ fullStackPHPClassSession("print", __LINE__);
  */
 fullStackPHPClassSession("print_r", __LINE__);
 
+    $array = [
+        "company" => "UpInside",
+        "course" => "FSPHP",
+        "class" => "Comandos de saída"
+    ];
+
+    //print $array;
+    print_r($array);
+    echo "<pre>", print_r($array, true), "</pre>";
 
 /**
  * [ printf ] https://php.net/manual/pt_BR/function.printf.php
