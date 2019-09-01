@@ -36,3 +36,34 @@ fullStackPHPClassSession("closures", __LINE__);
  * [ generators ] https://php.net/manual/pt_BR/language.generators.overview.php
  */
 fullStackPHPClassSession("generators", __LINE__);
+
+$iterator = 41; //4000000
+
+function showDates($days)
+{
+    $saveDate = [];
+    for ($day = 1; $day < $days; $day++) {
+        $saveDate[] = date("d/m/Y", strtotime("+{$day}days"));
+    }
+    return $saveDate;
+}
+
+echo "<div style='text-align: center'>";
+    foreach (showDates($iterator) as $date) {
+        echo "<small class='tag'>{$date}</small>" . PHP_EOL;
+    }
+echo "</div>";
+
+
+function generatorDate($days)
+{
+    for ($day = 1; $day < $days; $day++) {
+        yield date("d/m/Y", strtotime("+{$day}days"));
+    }
+}
+
+echo "<div style='text-align: center'>";
+    foreach (generatorDate($iterator) as $date) {
+        echo "<small class='tag' style='background-color: var(--green)'>{$date}</small>" . PHP_EOL;
+    }
+echo "</div>";
