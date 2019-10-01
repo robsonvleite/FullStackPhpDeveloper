@@ -32,3 +32,10 @@ include __DIR__ . "/profile.php";
  */
 fullStackPHPClassSession("require, require_once", __LINE__);
 
+//require "file.php";
+//echo "<p>Continue</p>";
+
+require __DIR__ . "/config.php";
+require_once __DIR__ . "/config.php";
+
+echo "<h1>" . COURSE . "</h1>";
