@@ -8,7 +8,7 @@ fullStackPHPClassName("02.12 - Constantes e constantes mágicas");
 fullStackPHPClassSession("constantes", __LINE__);
 
 define("COURSE", "Full Stack PHP");
-const AUTHOR = "Robson";
+const AUTHOR = "Robson"; 
 
 $formation = true;
 if ($formation) {
