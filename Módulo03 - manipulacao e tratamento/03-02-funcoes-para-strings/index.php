@@ -39,6 +39,44 @@ var_dump([
  */
 fullStackPHPClassSession("substituição", __LINE__);
 
+$mbReplace = $mbString . " Fui, iria novamente, e foi épico!";
+
+var_dump([
+    "mbReplace" => $mbReplace,
+    "mb_strlen" => mb_strlen($mbReplace),
+    "mb_strpos" => mb_strpos($mbReplace, ", "), // Contando até a primeira ocorrência de ','
+    "mb_strrpos" => mb_strrpos($mbReplace, ", "), // Contando até a última ocorrência de ','
+    "mb_substr" => mb_substr($mbReplace, 40 + 2, 14), // Contando do caracter 42 até os próximos 14
+    // True = mostra até a primeira ocorrência de ','
+    // False = mostra da primeira ocorrência, até o final
+    "mb_strstr" => mb_strstr($mbReplace, ", ", false), 
+    // True = mostra até a última ocorrência de ','
+    // False = mostra da última ocorrência, até o final
+    "mb_strrchr" => mb_strrchr($mbReplace, ", ", true)
+]);
+
+
+$mbStrReplace = $string;
+
+echo "<p>", $mbStrReplace, "</p>";
+echo "<p>", str_replace("AC/DC", "Nirvana", $mbStrReplace), "</p>"; // Substituindo AC/DC por Nirvana na variável(string) passada 
+echo "<p>", str_replace(["AC/DC", "eu fui", "último"], "Nirvana", $mbStrReplace), "</p>"; // Substituindo vários valores por Nirvana somente na variável(string) passada 
+echo "<p>", str_replace(["AC/DC", "incrível"], ["Nirvana", "ÉPICOOO!!"], $mbStrReplace), "</p>"; // Substituindo vários valores pela ordem das arrays na variável(string) passada 
+
+
+$article = <<<ROCK
+   <article>
+      <h3>event</h3>
+      <p>desc</p>
+   </article>
+ROCK;
+
+$articleData = [
+    "event" => "Rock in Rio",
+    "desc" => $mbReplace
+];
+
+echo str_replace(array_keys($articleData), array_values($articleData), $article);
 
 /**
  * [ parse string ] parse_str | mb_parse_str
