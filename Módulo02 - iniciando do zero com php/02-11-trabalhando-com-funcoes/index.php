@@ -21,6 +21,9 @@ var_dump(optionArgs("Robson", "Kaue", "Gustavo"));
  */
 fullStackPHPClassSession("global access", __LINE__);
 
+$weight = 86;
+$height = 1.83;
+echo calcImc();
 
 /*
  * [ static arguments ] static $var
