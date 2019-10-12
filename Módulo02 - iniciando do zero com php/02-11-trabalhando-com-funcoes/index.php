@@ -30,6 +30,11 @@ echo calcImc();
  */
 fullStackPHPClassSession("static arguments", __LINE__);
 
+$pay = payTotal(200);
+$pay = payTotal(150);
+$pay = payTotal(500);
+
+echo $pay;
 
 /*
  * [ dinamic arguments ] get_args | num_args
