@@ -7,6 +7,17 @@ fullStackPHPClassName("03.02 - Funções para strings");
  */
 fullStackPHPClassSession("strings e multibyte", __LINE__);
 
+$string = "O último show do AC/DC foi incrível!";
+
+var_dump([
+    "string" => $string,
+    "strlen" => strlen($string), // Contando os caracteres, e os ascentos como + um caracter
+    "mb_strlen" => mb_strlen($string), // Contando os caracteres, e os caracteres com ascentos contando como um só
+    "substr" => substr($string, "9"), // Mostrando a partir do caracter 9, e os ascentos como + um caracter
+    "mb_substr" => mb_substr($string, "9"), // Mostrando a partir do caracter 9, e os caracteres com ascentos contando como um só
+    "strtoupper" => strtoupper($string), // Mostrando em caixa alta(tudo maiúsculo), sem deixar os caracteres com ascentos em caixa alta 
+    "mb_strtoupper" => mb_strtoupper($string), // Mostrando em caixa alta(tudo maiúsculo), deixando os caracteres com ascentos em caixa alta
+]);
 
 /**
  * [ conversão de caixa ] https://php.net/manual/en/function.mb-convert-case.php
