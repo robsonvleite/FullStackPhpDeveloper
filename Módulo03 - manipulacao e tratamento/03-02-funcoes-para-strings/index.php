@@ -24,6 +24,15 @@ var_dump([
  */
 fullStackPHPClassSession("conversão de caixa", __LINE__);
 
+$mbString = $string;
+
+var_dump([
+    "mb_strtoupper" => mb_strtoupper($mbString),
+    "mb_strtolower" => mb_strtolower($mbString),
+    "mb_convert_case UPPER" => mb_convert_case($mbString, MB_CASE_UPPER),
+    "mb_convert_case LOWER" => mb_convert_case($mbString, MB_CASE_LOWER),
+    "mb_convert_case TITLE" => mb_convert_case($mbString, MB_CASE_TITLE),
+]);
 
 /**
  * [ substituição ] multibyte and replace
