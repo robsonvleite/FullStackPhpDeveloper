@@ -40,3 +40,5 @@ echo $pay;
  * [ dinamic arguments ] get_args | num_args
  */
 fullStackPHPClassSession("dinamic arguments", __LINE__);
+
+var_dump(myTeam("Kaue", "Gustavo", "Gah", "João", "Ricardo"));
