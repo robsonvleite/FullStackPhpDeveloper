@@ -82,3 +82,12 @@ echo str_replace(array_keys($articleData), array_values($articleData), $article)
  * [ parse string ] parse_str | mb_parse_str
  */
 fullStackPHPClassSession("parse string", __LINE__);
+
+$endPoint = "name=Robson&email=cursos@upinside.com.br";
+mb_parse_str($endPoint, $parseEndPoint);
+
+var_dump([
+    $endPoint,
+    $parseEndPoint,
+    (object)$parseEndPoint
+]);
