@@ -105,3 +105,32 @@ var_dump(explode(", ", $arrToString));
  * [ exemplo prático ] um template view | implode
  */
 fullStackPHPClassSession("exemplo prático", __LINE__);
+
+$profile = [
+    "name" => "Robson",
+    "company" => "UpInside",
+    "mail" => "cursos@upinside.com.br"
+];
+
+$template = <<<TPL
+   <article>
+      <h1>{{name}}</h1>
+      <p>{{company}}<br>
+      <a href="mailto:{{mail}}" title="Enviar e-mail para {{name}}">Enviar E-mail</a></p>
+   </article>
+TPL;
+
+echo $template;
+
+echo str_replace(
+    array_keys($profile), array_values($profile), $template
+);
+
+$replaces = "{{" . implode("}}&{{", array_keys($profile)) . "}}";
+
+// var_dump(explode("&", $replaces));
+echo str_replace(
+    explode("&", $replaces),
+    array_values($profile),
+    $template
+);
