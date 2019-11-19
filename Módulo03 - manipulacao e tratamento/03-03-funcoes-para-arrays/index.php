@@ -78,6 +78,28 @@ var_dump([
  */
 fullStackPHPClassSession("verificação", __LINE__);
 
+var_dump(
+    [
+        array_keys($assoc),
+        array_values($assoc)
+    ]
+);
+
+// in_array — Checa se um valor("AC/DC") existe em um array($assoc)
+if (in_array("AC/DC", $assoc)) {
+    echo "<p>Cause I`m back!</p>";
+} else {
+    echo "<p>Não estou na array</p>";
+}
+
+// implode — Junta elementos de uma matriz em uma string
+// Nesse caso separando cada elemento por ', '
+$arrToString = implode(", ", $assoc);
+echo "<p>{$arrToString}</p>";
+echo "<p>Eu curto {$arrToString} e muitas outras!</p>";
+
+// explode - Transforma a string de volta em uma array
+var_dump(explode(", ", $arrToString));
 
 /**
  * [ exemplo prático ] um template view | implode
