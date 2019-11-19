@@ -54,6 +54,24 @@ var_dump(
  */
 fullStackPHPClassSession("ordenação", __LINE__);
 
+// array_reverse — Retorna um array com os elementos na ordem inversa
+$index = array_reverse($index);
+$assoc = array_reverse($assoc);
+
+// asort — Ordena um array mantendo a associação entre índices e valores
+asort($index);
+asort($assoc);
+
+ksort($index); // ksort — Ordena um array pelas chaves
+krsort($assoc); // krsort — Ordena um array pelas chaves em ordem descrescente
+
+sort($index); // sort — Ordena um array
+rsort($index); // rsort — Ordena um array em ordem descrescente
+
+var_dump([
+    $index,
+    $assoc
+]);
 
 /*
  * [ verificação ]  keys | values | in | explode
