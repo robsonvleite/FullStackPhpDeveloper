@@ -42,3 +42,22 @@ var_dump($company);
  */
 fullStackPHPClassSession("análise", __LINE__);
 
+$date = new DateTime();
+
+var_dump([
+    "class" => get_class($date),
+    "methods" => get_class_methods($date),
+    "vars" => get_object_vars($date),
+    "parents" => get_parent_class($date),
+    "subclass" => is_subclass_of($date, "DateTime"),
+]);
+
+$exception = new PDOException();
+
+var_dump([
+    "class" => get_class($exception),
+    "methods" => get_class_methods($exception),
+    "vars" => get_object_vars($exception),
+    "parents" => get_parent_class($exception),
+    "subclass" => is_subclass_of($exception, "Exception"),
+]);
