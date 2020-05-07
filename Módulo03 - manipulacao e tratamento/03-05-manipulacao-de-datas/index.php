@@ -27,7 +27,7 @@ var_dump([
     date(DATE_W3C),
 ]);
 var_dump([
-    getdate(),
+    "getdate" => getdate(),
 ]);
 
 echo "<p>Hoje é dia ", getdate()['mday'] , "</p>";
@@ -36,3 +36,17 @@ echo "<p>Hoje é dia ", getdate()['mday'] , "</p>";
  * [ string to date ] strtotime | strftime
  */
 fullStackPHPClassSession("string to date", __LINE__);
+
+var_dump([
+    "strtotime NOW" => strtotime("now"), // Time atual
+    "time" => time(), // Atalho para strtotime("now")
+    "strtotime+10dias" => strtotime("+10days"),
+    "date DATE_BR" => date(DATE_BR),
+    "date +10days" => date(DATE_BR, strtotime("+10days")), // Incluindo mais 10 dias
+    "date -10days" => date(DATE_BR, strtotime("-10days")), // Subtraindo 10 dias
+    "date +year" => date(DATE_BR, strtotime("+1year")), // Incluindo mais 1 ano (year/years)
+]);
+
+$format = "%d/%m/%Y %Hhoras %Mminutos %Ssegundos";
+echo "<p>A data de hoje é ", strftime($format) , "</p>";
+echo strftime("<p>Hoje é dia %d do %m de %Y às %H horas e %m minutos</p>");
