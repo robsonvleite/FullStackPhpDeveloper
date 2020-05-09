@@ -80,3 +80,20 @@ var_dump([
  * [ DatePeriod ] http://php.net/manual/pt_BR/class.dateperiod.php
  */
 fullStackPHPClassSession("A classe DatePeriod", __LINE__);
+
+$start = new DateTime("2020-01-09");
+$interval = new DateInterval("P1M");
+$end = new DateTime("2020-12-10"); 
+$period = new DatePeriod($start, $interval, $end);
+
+var_dump([
+    "start" => $start->format(DATE_BR),
+    "interval" => $interval,
+    "end" => $end->format(DATE_BR)
+], $period, get_class_methods($period));
+echo "<br>";
+define("INVOICE_DATE", "d/m/Y");
+echo "<h1>Sua assinatura</h1>";
+foreach($period as $recurrences) {
+    echo "<p>Próximo vencimento da sua fatura:  <b style='font-size:1.2em'>{$recurrences->format(INVOICE_DATE)}</b></p>";
+}
