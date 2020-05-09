@@ -41,6 +41,40 @@ var_dump([
  */
 fullStackPHPClassSession("A classe DateInterval", __LINE__);
 
+$dateInterval = new DateInterval("P10Y2MT10M"); // P = Períod, 10Y = 10 years, 2M = 2 months, T = Time, 10M = 10 minutes;
+
+var_dump($dateInterval);
+
+$dateTime = new DateTime("now"); // Pegando a data e horário atual
+$dateTime->add($dateInterval); // Adicionando um intervalo ao $dateIime(atual/horário de agora) 
+$dateTime->sub($dateInterval); // Subtraindo um intervalo ao $dateTime(atual/horário de agora) 
+
+var_dump($dateTime);
+
+$birth = new DateTime(date("Y") . "-07-21");
+$dateNow = new DateTime("now");
+$diffDates = $dateNow->diff($birth); // Tirando a diferença entre as datas/variáveis
+
+var_dump([
+    "Horário atual" => $dateNow,
+    "Meu aniversáio será em" => $birth,
+    "Diferença das datas" => $diffDates,
+]);
+
+if($diffDates->invert) { // Se o invert for = 0 -> siginifica que a data chegará.  Se o invert for = 1 -> siginifica que a data já passou.
+    echo "<p>Seu aniversário foi à {$diffDates->days} dias.</p>";
+} else {
+    echo "<p>Faltam {$diffDates->days} dias para seu aniversário!</p>";
+}
+
+$dateResources = new DateTime("now");
+
+var_dump([
+    $dateResources,
+    $dateResources->format(DATE_BR),
+    $dateResources->sub(DateInterval::createFromDateString("10days"))->format(DATE_BR), // Utilizando a interface estática de intervalos e subtraindo 10 dias 
+    $dateResources->add(DateInterval::createFromDateString("10days"))->format(DATE_BR), // Utilizando a interface estática de intervalos e adicionando 10 dias 
+]);
 
 /**
  * [ DatePeriod ] http://php.net/manual/pt_BR/class.dateperiod.php
