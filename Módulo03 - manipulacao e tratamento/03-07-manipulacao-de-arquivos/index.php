@@ -41,7 +41,26 @@ while(!feof($open)) { // feof = Enquanto não chegar ao final do arquivo continu
  echo "<p>". fgets($open) ."</p>"; // Pegando os dados do arquivo
 } 
 
+fclose($open);
+
 /*
  * [ get, put content ] file_get_contents | file_put_contents
  */
 fullStackPHPClassSession("get, put content", __LINE__);
+
+$getContents = __DIR__ . "/teste2.txt";
+if(file_exists($getContents) && is_file($getContents)) {
+    echo file_get_contents($getContents); // Só trabalha com uma arquivo ja criado
+} else {
+    $data = "<article><h1>Robson</h1><p>CEO UpInside<br>cursos@upinside.com.br</p></article>";
+    file_put_contents($getContents, $data);
+    echo file_get_contents($getContents);
+}
+
+// unlink — Apaga um arquuivo
+// unlink($getContents);
+// unlink($file);
+
+if(file_exists(__DIR__ . "/teste3.txt") && is_file(__DIR__ . "/teste3.txt")) {
+    unlink(__DIR__ . "/teste3.txt");
+}
