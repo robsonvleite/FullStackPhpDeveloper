@@ -57,7 +57,7 @@ if(file_exists($getContents) && is_file($getContents)) {
     echo file_get_contents($getContents);
 }
 
-// unlink — Apaga um arquuivo
+// unlink — Apaga um arquivo
 // unlink($getContents);
 // unlink($file);
 
