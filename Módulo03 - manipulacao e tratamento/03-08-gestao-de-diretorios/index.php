@@ -20,6 +20,22 @@ if(!file_exists($folder) || !is_dir($folder)) {
 fullStackPHPClassSession("copiar e renomear", __LINE__);
 
 
+$file = __DIR__ . "/file.txt";
+var_dump(
+    pathinfo($file),
+    scandir($folder),
+    scandir(__DIR__)
+);
+
+if (!file_exists($file) || !is_file($file)) {
+    fopen($file, "w");
+} else {
+    //var_dump(filemtime($file), filemtime(__DIR__ . "/uploads/file.txt"));
+    //copy($file, $folder . "/" . basename($file));
+    //rename(__DIR__ . "/uploads/file.txt", __DIR__ . "/uploads/" . time() . "." . pathinfo($file)["extension"]); // renomeando
+    rename($file, __DIR__ . "/uploads/" . time() . "." . pathinfo($file)["extension"]); // movendo + renomeando
+}
+
 
 /*
  * [ remover e deletar ] unlink | rmdir
