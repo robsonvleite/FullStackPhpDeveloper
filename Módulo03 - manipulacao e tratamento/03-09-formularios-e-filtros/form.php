@@ -1,4 +1,4 @@
-<form name="post" action="./" method="<?= $form->method; ?>" enctype="multipart/form-data">  enctype="multipart/form-data" = aceita qualquer tipo de formato(ex: img, texto e etc...)
+<form name="post" action="./" method="<?= $form->method; ?>" enctype="multipart/form-data"> <!-- enctype="multipart/form-data" = aceita qualquer tipo de formato(ex: img, texto e etc...) -->
     <p style="margin-bottom: 10px; text-align: right">
         <a href="./" title="Atualizar">Atualizar</a>
     </p>

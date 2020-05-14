@@ -23,6 +23,39 @@ include __DIR__ . "/form.php";
  */
 fullStackPHPClassSession("post", __LINE__);
 
+var_dump($_POST);
+
+// Pegando cada valor manualmente enviado pelo usuário
+$postName = filter_input(INPUT_POST, "name", FILTER_DEFAULT);
+$postMail = filter_input(INPUT_POST, "mail", FILTER_DEFAULT);
+
+// Pegando todos os campos do fomr de uma vez enviado pelo usuário
+$postArray = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+var_dump([
+    $postName,
+    $postMail,
+    $postArray
+]);
+    
+if($postArray) {
+    // in_array — Checa se um valor existe em um array(Checando se os campos estão vazios)
+    if(in_array("", $postArray)) {
+        echo "<p class='trigger warning'>Preencha todos os campos!</p>";
+    } elseif(!filter_var($postArray['mail'], FILTER_VALIDATE_EMAIL)) {
+        echo "<p class='trigger warning'>E-mail informado não é válido!</p>";
+    } else {
+        // array_map = Realiza um callback em cada item da array,  realizando o callback chamado(strip_tags, trim e etc ...)
+        $saveStrip = array_map("strip_tags", $postArray); // strip_tags = remove qualquer código que venha junto com o dado
+        $save = array_map("trim", $saveStrip); // trim = remove qualquer espaço que seja desnecessário
+        var_dump($save);
+
+        echo "<p class='trigger accept'>Cadastro realizado com sucesso!</p>";
+    }
+}
+
+$form->method = "post";
+include __DIR__ . "/form.php";
 
 /*
  * [ get ] $_GET | INPUT_GET | filter_input | filter_var
