@@ -62,6 +62,14 @@ include __DIR__ . "/form.php";
  */
 fullStackPHPClassSession("get", __LINE__);
 
+var_dump($_GET);
+$get = filter_input(INPUT_GET, "mail", FILTER_DEFAULT);
+$getArray = filter_input(INPUT_GET, FILTER_DEFAULT);
+
+var_dump($get);
+
+$form->method = "get";
+include __DIR__ . "/form.php";
 
 /*
  * [ filters ] list | id | var[_array] | input[_array]
