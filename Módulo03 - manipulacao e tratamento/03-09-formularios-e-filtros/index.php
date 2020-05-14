@@ -8,6 +8,15 @@ fullStackPHPClassName("03.09 - Formuários e filtros");
  */
 fullStackPHPClassSession("request", __LINE__);
 
+$form = new stdClass();
+$form->name = "Ricardo";
+$form->mail = "ricardo.baldrez@gmail.com";
+
+var_dump($_REQUEST);
+
+$form->method = "get";
+$form->method = "post";
+include __DIR__ . "/form.php";
 
 /*
  * [ post ] $_POST | INPUT_POST | filter_input | filter_var
