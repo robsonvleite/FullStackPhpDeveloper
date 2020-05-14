@@ -30,14 +30,35 @@ var_dump(
 if (!file_exists($file) || !is_file($file)) {
     fopen($file, "w");
 } else {
-    //var_dump(filemtime($file), filemtime(__DIR__ . "/uploads/file.txt"));
+    // var_dump(filemtime($file), filemtime(__DIR__ . "/uploads/file.txt")); //filemtime — Obtém o tempo de modificação do arquivo
     //copy($file, $folder . "/" . basename($file));
     //rename(__DIR__ . "/uploads/file.txt", __DIR__ . "/uploads/" . time() . "." . pathinfo($file)["extension"]); // renomeando
     rename($file, __DIR__ . "/uploads/" . time() . "." . pathinfo($file)["extension"]); // movendo + renomeando
 }
 
-
 /*
  * [ remover e deletar ] unlink | rmdir
  */
 fullStackPHPClassSession("remover e deletar", __LINE__);
+
+$dirRemove = __DIR__ . "/remove";
+$dirFiles = array_diff(scandir($dirRemove), ['.', '..']);
+$dirCount = count($dirFiles);
+
+var_dump([
+    $dirRemove,
+    $dirFiles, 
+    $dirCount,
+]);
+
+if($dirCount >= 1) {
+    echo "<p>Clear ...</p>";
+    foreach (scandir($dirRemove) as $fileItem) {
+        $fileItem = __DIR__ . "/remove/{$fileItem}";
+        if (file_exists($fileItem) && is_file($fileItem)) {
+            unlink($fileItem);
+        }
+    }
+} else {
+    echo "<p>Cleared</p>";
+}
