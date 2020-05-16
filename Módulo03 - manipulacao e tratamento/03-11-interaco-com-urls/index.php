@@ -36,3 +36,47 @@ var_dump(
  * [ filter list ] https://php.net/manual/en/filter.filters.php
  */
 fullStackPHPClassSession("segurança", __LINE__);
+
+$dataFilter = http_build_query([
+    "name" => "Ricardo",
+    "company" => "Google",
+    "mail" => "ricardo.baldrez@gmail.com",
+    "site" => "https://google.com.br",
+    "script" => "<script>alert('js alert)</script>"
+]);
+
+echo "<p><a href='index.php?{$dataFilter}'>Data Filter</a></p>";
+
+$dataUrl = filter_input_array(INPUT_GET, FILTER_SANITIZE_STRIPPED); 
+
+if($dataUrl) {
+    if(in_array("", $dataUrl)) {
+        echo "<p class='trigger warning'>Faltam dados!</p>";
+    } elseif(empty($dataUrl['mail'])) {
+        echo "<p class='trigger warning'>Preencha o e-mail</p>";
+    } elseif (!filter_var($dataUrl['mail'], FILTER_VALIDATE_EMAIL)) {
+        echo "<p class='trigger warning'>E-mail inválido</p>";
+    } else {
+        echo "<p class='trigger accept'>Tudo certo!</p>";
+    }
+}
+
+var_dump([
+    "dataFilter" => $dataFilter,
+    "dataUrl" => $dataUrl
+]);
+
+parse_str($dataFilter, $arrDataFilter); // parse_str = Transformando os argumentos novamente em uma array
+var_dump([
+    "arrDataFilter" => $arrDataFilter
+]);
+
+$dataPreFilter = [
+    "name" => FILTER_SANITIZE_STRING,
+    "company" => FILTER_SANITIZE_STRING,
+    "mail" => FILTER_VALIDATE_EMAIL,
+    "site" => FILTER_VALIDATE_URL,
+    "script" => FILTER_SANITIZE_STRIPPED
+];
+
+var_dump(filter_var_array($arrDataFilter, $dataPreFilter));
