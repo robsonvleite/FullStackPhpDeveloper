@@ -18,6 +18,13 @@ var_dump($user);
  */
 fullStackPHPClassSession("propriedades", __LINE__);
 
+$user->firstName = "Ricardo";
+$user->lastName = "Barbosa";
+$user->email = "ricardo.baldrez@gmail.com";
+
+var_dump($user);
+
+echo "<p>O e-mail do {$user->firstName} é {$user->email}</p>";
 
 /*
  * [ métodos ] São as funções que definem o comportamento e a regra de negócios de uma classe
