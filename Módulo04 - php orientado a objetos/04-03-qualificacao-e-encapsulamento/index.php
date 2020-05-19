@@ -37,6 +37,19 @@ var_dump(
  */
 fullStackPHPClassSession("visibilidade", __LINE__);
 
+require __DIR__ . "/source/Qualified/User.php";
+
+$user = new \Source\Qualifield\User();
+
+// $user->setFirstName("Ricardo");
+// $user->setLasttName("Barbosa");
+
+var_dump(
+    $user,
+    get_class_methods($user)
+);
+
+echo "<p>O e-mail de {$user->getFirstName()} é {$user->getLasttName()}</p>";
 
 /*
  * [ manipulação ] Classes com estruturas que abstraem a rotina de manipulação de objetos
