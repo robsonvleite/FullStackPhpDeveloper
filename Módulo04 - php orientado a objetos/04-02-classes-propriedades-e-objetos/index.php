@@ -7,6 +7,11 @@ fullStackPHPClassName("04.02 - Classes, propriedades e objetos");
  */
 fullStackPHPClassSession("classe e objeto", __LINE__);
 
+require __DIR__ . "/classes/User.php"; // Trazendo nossa classe User
+
+$user = new User(); // Instanciando a classe User e criando um objeto apartir dela 
+
+var_dump($user);
 
 /*
  * [ propriedades ] http://php.net/manual/pt_BR/language.oop5.properties.php
