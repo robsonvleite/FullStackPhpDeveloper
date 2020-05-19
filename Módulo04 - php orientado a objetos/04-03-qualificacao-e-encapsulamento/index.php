@@ -49,9 +49,30 @@ var_dump(
     get_class_methods($user)
 );
 
-echo "<p>O e-mail de {$user->getFirstName()} é {$user->getLasttName()}</p>";
+echo "<p>O e-mail de {$user->getFirstName()} é {$user->getLastName()}</p>";
 
 /*
  * [ manipulação ] Classes com estruturas que abstraem a rotina de manipulação de objetos
  */
 fullStackPHPClassSession("manipulação", __LINE__);
+
+use \Source\Qualifield\User;
+
+$userFinal = new User();
+$userFinal->setUser(
+    "Ricardo",
+    "Barbosa",
+    "ricardo.baldrezgmail.com"
+);
+
+if($userFinal->getError()) {
+    echo "<p class='trigger error'>{$userFinal->getError()}</p>";
+
+    return;
+}
+
+var_dump(
+    $userFinal
+);
+
+echo "<p>O e-mail de {$userFinal->getFirstName()} é {$userFinal->getEmail()}</p>";

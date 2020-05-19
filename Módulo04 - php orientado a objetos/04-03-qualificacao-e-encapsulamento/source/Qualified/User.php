@@ -5,8 +5,24 @@ namespace Source\Qualifield;
 class User
 {
     private $firstName;
-    private $lasttName;
+    private $lastName;
     private $email;
+
+    private $error;
+
+    public function setUser($firstName, $lastName, $email)
+    {
+        $this->setFirstName($firstName);
+        $this->setLastName($lastName);
+
+        if(!$this->setEmail($email)) {
+            $this->error = "O e-mail {$this->getEmail()} não é válido!!!";
+
+            return false;
+        }
+
+        return true;
+    }
 
     /**
      * Get the value of firstName
@@ -31,9 +47,9 @@ class User
     /**
      * Get the value of lasttName
      */ 
-    public function getLasttName()
+    public function getLastName()
     {
-        return $this->lasttName;
+        return $this->lastName;
     }
 
     /**
@@ -41,9 +57,9 @@ class User
      *
      * @return  self
      */ 
-    private function setLasttName($lasttName)
+    private function setLastName($lastName)
     {
-        $this->lasttName = $lasttName;
+        $this->lastName = $lastName;
 
         return $this;
     }
@@ -70,5 +86,13 @@ class User
         } else {
             return false;
         } 
+    }
+
+    /**
+     * Get the value of error
+     */ 
+    public function getError()
+    {
+        return $this->error;
     }
 }
