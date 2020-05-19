@@ -30,3 +30,12 @@ echo "<p>O e-mail do {$user->firstName} é {$user->email}</p>";
  * [ métodos ] São as funções que definem o comportamento e a regra de negócios de uma classe
  */
 fullStackPHPClassSession("métodos", __LINE__);
+
+$user->setFirstName("Ricardo");
+$user->setLastName("Baldrez");
+
+if(!$user->setEmail("ricardo@gmail")) {
+    echo "<p class='trigger error'>O email não é válido!</p>";
+}
+
+var_dump($user);

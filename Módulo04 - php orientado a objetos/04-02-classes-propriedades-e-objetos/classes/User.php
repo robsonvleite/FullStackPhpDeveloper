@@ -60,7 +60,7 @@ class User {
      *
      * @return  self
      */ 
-    public function setMail($email)
+    public function setEmail($email)
     {
         $this->email = $email;
 
