@@ -7,8 +7,9 @@ fullStackPHPClassName("04.04 - Carregamento automático");
  */
 fullStackPHPClassSession("autoload spl psr-4", __LINE__);
 
-require __DIR__ . "/source/Loading/User.php";
-require __DIR__ . "/source/Loading/Address.php";
+// Com o autoload carregando as classes através do operador new, não precisamos mais incluir com require
+// require __DIR__ . "/source/Loading/User.php";
+// require __DIR__ . "/source/Loading/Address.php";
 // require __DIR__ . "/source/Loading/Company.php";
 
 require __DIR__ . "/source/autoload.php";
@@ -27,3 +28,8 @@ var_dump(
  * [ autoload composer psr-4 ] https://getcomposer.org/doc/00-intro.md
  */
 fullStackPHPClassSession("autoload composer psr-4", __LINE__);
+
+require __DIR__ . "/vendor/autoload.php";
+
+$email = new \PHPMailer\PHPMailer\PHPMailer();
+var_dump($email);
