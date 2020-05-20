@@ -12,6 +12,15 @@ require __DIR__ . "/source/autoload.php";
  */
 fullStackPHPClassSession("__set", __LINE__);
 
+$fsphp = new \Source\Interpretation\Product();
+$fsphp->handler("FSPHP", 1997);
+
+$fsphp->name = "FSPHP";
+$fsphp->price = 1997;
+$fsphp->title = "FSPHP";
+$fsphp->value = 1997;
+
+var_dump($fsphp);
 
 /*
  * [ get ] Executado automaticamente quando se tenta obter uma propriedade inacessível
