@@ -42,3 +42,11 @@ var_dump(
  * http://php.net/manual/pt_BR/language.oop5.decon.php
  */
 fullStackPHPClassSession("__destruct", __LINE__);
+
+// Executado automaticamente quando o ciclo de vida do objeto é encerrado
+$maria = clone $ricardo;
+$maria->setFirstName("Maria");
+$maria->setLastName("Aparecida");
+
+$maria = null; // Destruíndo manualmente
+// Se não após a leitura do PHP feita de cima para baixo, os objetos serão destruídos através da função __destruct automaticamente

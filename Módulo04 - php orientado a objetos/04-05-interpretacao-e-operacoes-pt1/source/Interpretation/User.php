@@ -23,6 +23,12 @@ class User
         echo "<p class='trigger accept'>Clonou!!!</p>";
     }
 
+    public function __destruct()
+    {
+        var_dump($this);
+        echo "<p class='trigger error'>O objeto {$this->firstName} foi destruído!!!</p>";
+    }
+
     /**
      * Get the value of firstName
      */ 
