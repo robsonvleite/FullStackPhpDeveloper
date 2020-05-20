@@ -10,6 +10,15 @@ require __DIR__ . "/source/autoload.php";
  */
 fullStackPHPClassSession("__construct", __LINE__);
 
+// __construct = Cria uma responsabilidade maior para criar o objeto, permitindo assim a criação somente depois de inserir pelo menos os dados básicos. O método é executado automaticamente logo após a classe ser instânciada
+
+$user = new \Source\Interpretation\User(
+    "Ricardo",
+    "Barbosa",
+    "ricardo.baldrez@gmail.com"
+);
+
+var_dump($user);
 
 /*
  * [ clone ] Executado automaticamente quando um novo objeto é criado a partir do operador clone.

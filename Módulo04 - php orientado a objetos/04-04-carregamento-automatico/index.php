@@ -28,8 +28,3 @@ var_dump(
  * [ autoload composer psr-4 ] https://getcomposer.org/doc/00-intro.md
  */
 fullStackPHPClassSession("autoload composer psr-4", __LINE__);
-
-require __DIR__ . "/vendor/autoload.php";
-
-$email = new \PHPMailer\PHPMailer\PHPMailer();
-var_dump($email);
