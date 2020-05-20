@@ -7,7 +7,6 @@ class User
     private $firstName;
     private $lastName;
     private $email;
-
     private $error;
 
     public function setUser($firstName, $lastName, $email)
@@ -37,9 +36,9 @@ class User
      *
      * @return  self
      */ 
-    private function setFirstName($firstName)
+    private function setFirstName($param)
     {
-        $this->firstName = $firstName;
+        $this->firstName = $param;
 
         return $this;
     }
@@ -57,9 +56,9 @@ class User
      *
      * @return  self
      */ 
-    private function setLastName($lastName)
+    private function setLastName($param)
     {
-        $this->lastName = $lastName;
+        $this->lastName = $param;
 
         return $this;
     }
@@ -77,11 +76,11 @@ class User
      *
      * @return  self
      */ 
-    private function setEmail($email)
+    private function setEmail($param)
     {
-        $this->email = $email;
+        $this->email = $param;
 
-        if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if(filter_var($param, FILTER_VALIDATE_EMAIL)) {
             return true;
         } else {
             return false;

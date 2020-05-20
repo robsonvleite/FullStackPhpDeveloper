@@ -29,7 +29,7 @@ ini_set('xdebug.overload_var_dump', 1);
 /**
  * [ interface ] Style, icon and logo
  */
-echo "<link rel='stylesheet' href='../../fullstackphp/fsphp.css'/>",
+echo "<link rel='stylesheet' href='../fullstackphp/fsphp.css'/>",
 "<link rel='icon' href='https://www.upinside.com.br/uploads/fsphpicon.png'/>",
 "<img class='logofsphp' src='https://www.upinside.com.br/uploads/fsphp.png'/>";
 
