@@ -26,6 +26,16 @@ var_dump($user);
  */
 fullStackPHPClassSession("__clone", __LINE__);
 
+$ricardo = $user;
+
+$nathalia = clone $ricardo; // Quando chamarmos a palavra reservada 'clone', chamamos a função __clone da nossa classe
+$nathalia->setFirstName("Nathália");
+$nathalia->setLastName("Oliveira");
+
+var_dump(
+    $user,
+    $nathalia
+);
 
 /*
  * [ destruct ] Executado automaticamente quando o objeto é finalizado

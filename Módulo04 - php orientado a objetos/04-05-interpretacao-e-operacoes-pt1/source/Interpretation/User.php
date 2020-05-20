@@ -15,12 +15,32 @@ class User
         $this->email = $email;   
     }
 
-    /**
-     * Get the value of email
-     */ 
-    public function getFirstname()
+    public function __clone()
     {
-        return $this->email;
+        $this->firstName = null;
+        $this->lastName = null;
+        
+        echo "<p class='trigger accept'>Clonou!!!</p>";
+    }
+
+    /**
+     * Get the value of firstName
+     */ 
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set the value of firstName
+     *
+     * @return  self
+     */ 
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
     }
 
     /**
@@ -32,10 +52,34 @@ class User
     }
 
     /**
+     * Set the value of lastName
+     *
+     * @return  self
+     */ 
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
      * Get the value of email
      */ 
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Set the value of email
+     *
+     * @return  self
+     */ 
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
     }
 }
