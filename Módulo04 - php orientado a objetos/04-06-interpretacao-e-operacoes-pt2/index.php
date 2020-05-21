@@ -68,3 +68,7 @@ echo $fsphp;
  * http://php.net/manual/pt_BR/language.oop5.overloading.php#object.unset
  */
 fullStackPHPClassSession("__unset", __LINE__);
+
+unset($fsphp->name, $fsphp->price);
+
+var_dump($fsphp);

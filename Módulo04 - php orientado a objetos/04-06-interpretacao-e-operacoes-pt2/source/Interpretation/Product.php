@@ -39,6 +39,13 @@ class Product
         return "<p class='trigger'>Esse é um objeto da classe " . __CLASS__ . "</p>";
     }
 
+    public function __unset($name)
+    {
+        var_Dump($name);
+
+        trigger_error(__FUNCTION__ . ": Acesso negado a propriedade {$name}", E_USER_ERROR);
+    }
+
     public function handler($name, $price)
     {
         $this->name = $name;
