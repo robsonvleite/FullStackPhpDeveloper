@@ -14,10 +14,19 @@ class Product
         $this->inaccessibleData[$name] = $value;
     }
 
+    public function __get($name)
+    {
+        if(!empty($this->inaccessibleData[$name])) {
+            return $this->inaccessibleData[$name];
+        } else {
+            $this->notFound(__FUNCTION__, $name);
+        }
+    }
+
     public function handler($name, $price)
     {
         $this->name = $name;
-        $this->price = number_format($price, "2", ",", ".");
+        $this->price = "R$ " . number_format($price, "2", ",", ".");
     }
 
     public function notFound($method, $name)

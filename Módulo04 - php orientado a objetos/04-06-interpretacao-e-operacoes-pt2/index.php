@@ -17,8 +17,9 @@ $fsphp->handler("FSPHP", 1997);
 
 $fsphp->name = "FSPHP";
 $fsphp->price = 1997;
-$fsphp->title = "FSPHP";
+// $fsphp->title = "fsphp";
 $fsphp->value = 1997;
+$fsphp->company = "UpInside Treinamentos";
 
 var_dump($fsphp);
 
@@ -29,6 +30,9 @@ var_dump($fsphp);
  */
 fullStackPHPClassSession("__get", __LINE__);
 
+var_dump($fsphp);
+
+echo "<p>O curso {$fsphp->title} da {$fsphp->company} é o melhor curso de PHP do mercado!</p>";
 
 /*
  * [ isset ] Executada automaticamente quando um teste ISSET ou EMPTY é executado em uma propriedade inacessível
