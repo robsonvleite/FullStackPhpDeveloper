@@ -56,11 +56,12 @@ fullStackPHPClassSession("__call", __LINE__);
 $fsphp->notFound("Oppps", "teste");
 
 /*
- * [ unset ] Executada automaticamente quando se tenta usar unset em uma propriedade inacessível
+ * [ __toString ] Executada automaticamente quando se tenta dar um echo no objeto 
  * http://php.net/manual/pt_BR/language.oop5.overloading.php#object.unset
  */
 fullStackPHPClassSession("__toString", __LINE__);
 
+echo $fsphp;
 
 /*
  * [ unset ] Executada automaticamente quando se tenta usar unset em uma propriedade inacessível

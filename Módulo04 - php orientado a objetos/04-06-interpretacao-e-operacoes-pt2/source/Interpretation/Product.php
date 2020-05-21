@@ -34,6 +34,11 @@ class Product
         var_dump($arguments);
     }
 
+    public function __toString()
+    {
+        return "<p class='trigger'>Esse é um objeto da classe " . __CLASS__ . "</p>";
+    }
+
     public function handler($name, $price)
     {
         $this->name = $name;
