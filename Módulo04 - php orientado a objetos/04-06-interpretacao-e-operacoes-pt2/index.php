@@ -53,6 +53,7 @@ var_dump($fsphp);
  */
 fullStackPHPClassSession("__call", __LINE__);
 
+$fsphp->notFound("Oppps", "teste");
 
 /*
  * [ unset ] Executada automaticamente quando se tenta usar unset em uma propriedade inacessível

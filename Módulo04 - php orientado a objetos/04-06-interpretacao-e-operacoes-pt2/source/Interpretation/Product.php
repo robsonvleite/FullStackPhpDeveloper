@@ -28,13 +28,19 @@ class Product
         $this->notFound(__FUNCTION__, $name);
     }
 
+    public function __call($name, $arguments)
+    {
+        $this->notFound(__FUNCTION__, $name);
+        var_dump($arguments);
+    }
+
     public function handler($name, $price)
     {
         $this->name = $name;
         $this->price = "R$ " . number_format($price, "2", ",", ".");
     }
 
-    public function notFound($method, $name)
+    private function notFound($method, $name)
     {
         echo "<p class='trigger error'>{$method}: A propriedade {$name} não existe em " . __CLASS__ . "</p>";
     }
