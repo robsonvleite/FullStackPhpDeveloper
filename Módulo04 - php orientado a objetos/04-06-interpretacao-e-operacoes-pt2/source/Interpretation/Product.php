@@ -16,11 +16,16 @@ class Product
 
     public function __get($name)
     {
-        if(!empty($this->inaccessibleData[$name])) {
+        if (!empty($this->inaccessibleData[$name])) {
             return $this->inaccessibleData[$name];
         } else {
             $this->notFound(__FUNCTION__, $name);
         }
+    }
+
+    public function __isset($name)
+    {
+        $this->notFound(__FUNCTION__, $name);
     }
 
     public function handler($name, $price)
@@ -31,6 +36,6 @@ class Product
 
     public function notFound($method, $name)
     {
-        echo "<p class='trigger error'>{$method}: A propriedade {$name} não existe em ". __CLASS__ ."</p>";
+        echo "<p class='trigger error'>{$method}: A propriedade {$name} não existe em " . __CLASS__ . "</p>";
     }
 }

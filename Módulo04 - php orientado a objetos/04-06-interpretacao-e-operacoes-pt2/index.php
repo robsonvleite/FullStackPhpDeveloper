@@ -40,6 +40,11 @@ echo "<p>O curso {$fsphp->title} da {$fsphp->company} é o melhor curso de PHP d
  */
 fullStackPHPClassSession("__isset", __LINE__);
 
+isset($fsphp->name);
+isset($fsphp->phone);
+empty($fsphp->address);
+
+var_dump($fsphp);
 
 /*
  * [ call ] Executada automaticamente quando se tenta usar um método inacessível
