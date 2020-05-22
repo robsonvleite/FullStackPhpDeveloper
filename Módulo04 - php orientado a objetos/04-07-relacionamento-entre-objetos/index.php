@@ -61,3 +61,16 @@ foreach ($company->getProducts() as $product) {
  * objeto parte, que só existe enquanto o base existir.
  */
 fullStackPHPClassSession("composição", __LINE__);
+
+$company->addTeamMember("CEO", "Robson", "Leite");
+$company->addTeamMember("DEV", "Ricardo", "Barbosa");
+$company->addTeamMember("ADM", "Nathália", "Oliveira");
+$company->addTeamMember("SUP", "Gustavo", "Web");
+
+var_dump($company);
+
+echo "<h1>Membros do nosso time:</h1>";
+
+foreach ($company->getTeam() as $teamMember) {
+    echo "<p class='trigger'>{$teamMember->getJob()}: {$teamMember->getFirstName()} {$teamMember->getLastName()}</p>";
+}

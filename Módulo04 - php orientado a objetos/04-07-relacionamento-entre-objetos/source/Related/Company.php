@@ -32,6 +32,12 @@ class Company
         $this->products[] = $product;
     }
 
+    // Quando a função for chamada, ele vai criar um novo objeto do tipo User e alimentar a var team
+    public function addTeamMember($job, $firstName, $lastName)
+    {
+        $this->team[] = new \Source\Related\User($job, $firstName, $lastName);
+    }
+
     /**
      * Get the value of company
      */
