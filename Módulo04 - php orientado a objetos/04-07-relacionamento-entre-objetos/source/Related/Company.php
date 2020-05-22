@@ -10,6 +10,9 @@ class Company
      */
     private $address;
     private $team;
+    /**
+     * @var Product
+     */
     private $products;
 
     public function bootCompany($company, $address)
@@ -22,6 +25,11 @@ class Company
     {
         $this->company = $company;
         $this->address = $address;
+    }
+
+    public function addProduct(Product $product)
+    {
+        $this->products[] = $product;
     }
 
     /**
@@ -97,7 +105,7 @@ class Company
     /**
      * Set the value of products
      *
-     * @return  self
+     * @return array
      */
     public function setProducts($products)
     {
