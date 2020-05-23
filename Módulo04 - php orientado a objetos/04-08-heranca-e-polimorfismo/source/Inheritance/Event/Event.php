@@ -55,7 +55,7 @@ class Event
     /**
      * Get the value of date
      */
-    public function getDate(): \DateTime
+    public function getDate()
     {
         return $this->date->format("d/m/Y H:i");
     }

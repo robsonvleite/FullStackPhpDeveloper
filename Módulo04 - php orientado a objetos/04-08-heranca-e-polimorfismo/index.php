@@ -37,6 +37,17 @@ var_Dump($event);
  */
 fullStackPHPClassSession("classe filha", __LINE__);
 
+$address = new \Source\Inheritance\Address("Rua Forte do Calvário", 312);
+$event = new \Source\Inheritance\Event\EventLive(
+    "Workshop FSPHP Live",
+    new DateTime("2022-07-21 16:20"),
+    500,
+    10,
+    $address
+);
+
+
+var_dump($event);
 
 /*
  * [ polimorfismo ] Uma classe filha que tem métodos iguais (mesmo nome e argumentos) a class
