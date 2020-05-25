@@ -2,6 +2,8 @@
 
 use Source\Inheritance\Event\Event;
 
+use function PHPSTORM_META\override;
+
 require __DIR__ . '/../../fullstackphp/fsphp.php';
 fullStackPHPClassName("04.08 - Herança e polimorfismo");
 
@@ -54,3 +56,19 @@ var_dump($event);
  * pai, mas altera o comportamento desses métodos para se especializar
  */
 fullStackPHPClassSession("polimorfismo", __LINE__);
+$eventOnline = new \Source\Inheritance\Event\EventOnline(
+    "Workshop FSPHP Online",
+    new DateTime("2022-07-21 16:20"),
+    500,
+    "http://upinside.com.br/aovivo"
+);
+
+var_dump($eventOnline);
+
+$eventOnline->register("Ricardo", "ricardo.baldrez@gmail.com");
+$eventOnline->register("Nathália", "Nathália@gmail.com");
+$eventOnline->register("Fernando", "Fernando@gmail.com");
+$eventOnline->register("Maria", "Maria@gmail.com");
+$eventOnline->register("Baldrez", "baldrez@gmail.com");
+
+var_dump($eventOnline);

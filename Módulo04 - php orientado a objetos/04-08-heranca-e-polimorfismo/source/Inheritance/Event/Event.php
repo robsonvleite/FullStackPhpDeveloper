@@ -8,7 +8,7 @@ class Event
     private $date;
     private $price;
     private $register;
-    private $vacancies;
+    protected $vacancies; // Protected = Diz que a própria classe pode usar e as classes filhas também(ou seja, as classes que herdaram a classe Event nesse caso)
 
     public function __construct($event, \DateTime $date, $price, $vacancies)
     {
@@ -34,7 +34,7 @@ class Event
      *
      * @return  self
      */
-    public function setRegister($fullName, $email)
+    protected function setRegister($fullName, $email)
     {
         $this->register[] = [
             "name" => $fullName,
