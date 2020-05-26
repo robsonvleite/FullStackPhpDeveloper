@@ -12,4 +12,12 @@ class Config
     public static $company;
     public static $domain;
     public static $sector;
+
+    // self:: = Referência as propriedades dessa classe(por não se tratar de um objeto($this) usamos self)
+    public static function setConfig($company, $domain, $sector)
+    {
+        self::$company = $company;
+        self::$domain = $domain;
+        self::$sector = $sector;
+    }
 }

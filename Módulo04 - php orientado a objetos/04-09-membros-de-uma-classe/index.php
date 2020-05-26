@@ -45,6 +45,10 @@ var_dump($config, $reflection->getProperties(), $reflection->getDefaultPropertie
  */
 fullStackPHPClassSession("métodos", __LINE__);
 
+$config::setConfig('', '', ''); // Chamando a função através do instanciamento da classe
+Config::setConfig('Alura', 'alura.com.br', 'Educação'); // Chamando a função através da chamada global
+
+var_dump($config, $reflection->getMethods(), $reflection->getDefaultProperties());
 
 /*
  * [ exemplo ] Uma classe trigger
