@@ -29,6 +29,16 @@ var_dump($config, $reflection, $reflection->getConstants(), get_class_methods($r
  */
 fullStackPHPClassSession("propriedades", __LINE__);
 
+Config::$company = "UpInside";
+Config::$domain = "upinside.com.br";
+Config::$sector = "Educação";
+
+// Acessando e alterando o valor da propriedade
+$config::$sector = "Tecnologia";
+
+// $reflection->getProperties() = Pega as propriedades
+// $reflection->getDefaultProperties() = Pega as propriedades + seus valores(assosciative array)
+var_dump($config, $reflection->getProperties(), $reflection->getDefaultProperties());
 
 /*
  * [ métodos ] http://php.net/manual/pt_BR/language.oop5.static.php
