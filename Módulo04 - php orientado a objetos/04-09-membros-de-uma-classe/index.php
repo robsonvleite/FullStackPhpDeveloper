@@ -54,3 +54,20 @@ var_dump($config, $reflection->getMethods(), $reflection->getDefaultProperties()
  * [ exemplo ] Uma classe trigger
  */
 fullStackPHPClassSession("exemplo", __LINE__);
+
+use Source\Members\Trigger;
+
+$trigger = new Trigger();
+$trigger::show("Um objeto trigger");
+
+var_dump($trigger);
+
+Trigger::show("Essa é uma mensagem com gatilho rápido para o usuário!!!");
+Trigger::show("Essa é uma mensagem com gatilho rápido para o usuário!!!", Trigger::ACCEPT);
+Trigger::show("Essa é uma mensagem com gatilho rápido para o usuário!!!", Trigger::WARNING);
+Trigger::show("Essa é uma mensagem com gatilho rápido para o usuário!!!", Trigger::ERROR);
+echo "<br>";
+echo Trigger::push("Esse é um retorno com gatilho rápido para o usuário!!!");
+echo Trigger::push("Esse é um retorno com gatilho rápido para o usuário!!!", "accept"); // Usando uma string com o valor da constante
+echo Trigger::push("Esse é um retorno com gatilho rápido para o usuário!!!", Trigger::WARNING); // Ou usando o modo global pra acessar a constante
+echo Trigger::push("Esse é um retorno com gatilho rápido para o usuário!!!", Trigger::ERROR);
