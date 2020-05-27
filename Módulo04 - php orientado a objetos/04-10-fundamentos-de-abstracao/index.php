@@ -1,4 +1,7 @@
 <?php
+
+use Source\Bank\AccountCurrent;
+
 require __DIR__ . '/../../fullstackphp/fsphp.php';
 fullStackPHPClassName("04.10 - Fundamentos da abstração");
 
@@ -48,3 +51,20 @@ var_dump($saving);
  * com suas prórpias rotinas
  */
 fullStackPHPClassSession("especialização.b", __LINE__);
+
+$current = new AccountCurrent(
+    "0272",
+    "4204-0",
+    $client,
+    "1000",
+    "1000"
+);
+
+var_dump($current);
+
+$current->deposit("1000");
+$current->withdrawal("1000");
+$current->withdrawal("1000");
+$current->withdrawal("500");
+
+var_dump($current);
