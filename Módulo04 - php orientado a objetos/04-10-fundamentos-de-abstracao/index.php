@@ -64,7 +64,9 @@ var_dump($current);
 
 $current->deposit("1000");
 $current->withdrawal("1000");
-$current->withdrawal("1000");
 $current->withdrawal("500");
+$current->withdrawal("500");
+
+$current->extract();
 
 var_dump($current);
