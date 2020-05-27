@@ -24,6 +24,24 @@ var_dump(
  */
 fullStackPHPClassSession("especialização.a", __LINE__);
 
+$saving = new \Source\Bank\AccountSaving(
+    "0272",
+    "4204-0",
+    $client,
+    0
+);
+
+
+var_dump(
+    $saving
+);
+
+$saving->deposit(1000);
+$saving->deposit(2000);
+$saving->withdrawal(2000);
+$saving->extract();
+
+var_dump($saving);
 
 /*
  * [ especialização ] É uma classe filha que implementa a superclass e se especializa

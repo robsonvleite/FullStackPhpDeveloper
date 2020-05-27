@@ -9,7 +9,7 @@ class AccountSaving extends Account
 {
     private $interest;
 
-    protected function __construct($branch, $account, User $client, $balance)
+    public function __construct($branch, $account, User $client, $balance)
     {
         parent::__construct($branch, $account, $client, $balance);
         $this->interest = 0.006;
