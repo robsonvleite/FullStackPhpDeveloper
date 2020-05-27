@@ -10,6 +10,13 @@ require __DIR__ . "/source/autoload.php";
  */
 fullStackPHPClassSession("superclass", __LINE__);
 
+$client = new \Source\App\User("Ricardo", "barbosa");
+// $account = new \Source\Bank\Account("0272", "4204-0", $client, 2000);
+
+var_dump(
+    $client
+    // $account
+);
 
 /*
  * [ especialização ] É uma classe filha que implementa a superclasse e se especializa
