@@ -1,6 +1,7 @@
 <?php
 
 use Source\Contracts\User;
+use Source\Contracts\Login;
 use Source\Contracts\UserAdmin;
 
 require __DIR__ . '/../../fullstackphp/fsphp.php';
@@ -33,6 +34,12 @@ var_dump($user, $userAdimn);
  */
 fullStackPHPClassSession("associação", __LINE__);
 
+$login = new Login();
+
+$loginUser = $login->loginUser($user);
+$loginAdmin = $login->loginAdmin($userAdimn);
+
+var_dump($loginUser, $loginAdmin);
 
 /*
  * [ dependência ] Dependency Injection ou DI, é um contrato de relação entre objetos, onde
