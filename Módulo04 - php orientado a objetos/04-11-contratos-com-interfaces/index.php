@@ -21,13 +21,13 @@ $user = new User(
     "ricardo.baldrez@gmail.com"
 );
 
-$userAdimn = new UserAdmin(
+$userAdmin = new UserAdmin(
     "Ricardo",
     "Barbosa",
     "ricardo.baldrez@gmail.com"
 );
 
-var_dump($user, $userAdimn);
+var_dump($user, $userAdmin);
 
 /*
  * [ associação ] Um exemplo associando ao login
@@ -37,7 +37,7 @@ fullStackPHPClassSession("associação", __LINE__);
 $login = new Login();
 
 $loginUser = $login->loginUser($user);
-$loginAdmin = $login->loginAdmin($userAdimn);
+$loginAdmin = $login->loginAdmin($userAdmin);
 
 var_dump($loginUser, $loginAdmin);
 
@@ -46,3 +46,10 @@ var_dump($loginUser, $loginAdmin);
  * um método assina seus atributos com uma interface.
  */
 fullStackPHPClassSession("dependência", __LINE__);
+
+var_dump(
+    $login->login($user),
+    $login->login($user)->getFirstName(),
+    $login->login($userAdmin),
+    $login->login($userAdmin)->getLastName()
+);

@@ -17,4 +17,12 @@ class Login
         $this->logged = $user;
         return $this->logged;
     }
+
+    // Login geral(poderá ser utilizado em qualquer parte do sistema)
+    // Qualquer objeto que tenha um FirstName, LastName e email implementados, poderão implementar a interface com isso podendo fazer o login no sistema
+    public function login(UserInterface $user): UserInterface
+    {
+        $this->logged = $user;
+        return $this->logged;
+    }
 }
