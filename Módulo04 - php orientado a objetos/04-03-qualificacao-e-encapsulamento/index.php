@@ -23,7 +23,7 @@ var_dump(
 // 2º forma de utlizar o namespace
 
 use App\Template;
-use Web\Template AS WebTemplate; // Renomeando para que não haja confilto por ter o mesmo nome
+use Web\Template as WebTemplate; // Renomeando para que não haja confilto por ter o mesmo nome
 
 $appUseTemplate = new Template();
 $webUseTemplate = new WebTemplate();
@@ -65,7 +65,7 @@ $userFinal->setUser(
     "ricardo.baldrezgmail.com"
 );
 
-if($userFinal->getError()) {
+if ($userFinal->getError()) {
     echo "<p class='trigger error'>{$userFinal->getError()}</p>";
 
     return;
