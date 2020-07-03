@@ -10,8 +10,8 @@ fullStackPHPClassSession("controle de erros", __LINE__);
 // try -> executa e catch -> trata os erros
 try {
     // throw new Exception("Exception");
-    // throw new PDOException("PDOException");
-    throw new ErrorException("ErrorException");
+    throw new PDOException("PDOException");
+    // throw new ErrorException("ErrorException");
 } catch (PDOException | ErrorException $exception) {
     var_dump($exception);
 } catch (Exception $exception) {
