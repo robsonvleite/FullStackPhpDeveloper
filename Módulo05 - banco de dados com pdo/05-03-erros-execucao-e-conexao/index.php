@@ -7,6 +7,18 @@ fullStackPHPClassName("05.03 - Errors, conexão e execução");
  */
 fullStackPHPClassSession("controle de erros", __LINE__);
 
+// try -> executa e catch -> trata os erros
+try {
+    // throw new Exception("Exception");
+    // throw new PDOException("PDOException");
+    throw new ErrorException("ErrorException");
+} catch (PDOException | ErrorException $exception) {
+    var_dump($exception);
+} catch (Exception $exception) {
+    echo "<p class='trigger error'>{$exception->getMessage()}</p>";
+} finally { // Executado ao final da cadeia de validação
+    echo "<p class='trigger'>Execução finalizada!!!</p>";
+}
 
 /*
  * [ php data object ] Uma classe PDO para manipulação de banco de dados.
