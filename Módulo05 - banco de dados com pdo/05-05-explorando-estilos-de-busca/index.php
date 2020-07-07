@@ -17,7 +17,8 @@ $read = $connect->query("SELECT * FROM users LIMIT 3");
 if(!$read->rowCount()) {
     echo "<p class='trigger'>Não obteve resultados!</p>";
 } else {
-    var_dump($read->fetch());
+    // var_dump($read->fetch());
+    // fetch -> Traz um resultado apenas e o nextRowSet para poder percorrer todos eles com while por ex.
 
     while($user = $read->fetch()) {
         var_dump($user);
@@ -29,6 +30,17 @@ if(!$read->rowCount()) {
  */
 fullStackPHPClassSession("fetch all", __LINE__);
 
+// fetch -> abrir com while, fetchAll -> abrir com foreach por ser uma array
+
+$read = $connect->query("SELECT * FROM users LIMIT 3,2");
+
+// while ($user = $read->fetchAll()) {
+//     var_dump($user);
+// }
+
+foreach ($read->fetchAll() as $user) {
+    var_dump($user);
+}
 
 /*
  * [ fetch save ] Realziar um fetch diretamente em um PDOStatement resulta em um clear no buffer da consulta. Você
