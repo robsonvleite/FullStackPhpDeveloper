@@ -26,6 +26,27 @@ try {
  */
 fullStackPHPClassSession("php data object", __LINE__);
 
+try {
+    // Conexão com o Banco de Dados
+    $pdo = new PDO(
+        "mysql:host=localhost;dbname=fullstackphp", // dsn 
+        "root", // username BD
+        "",
+        [
+            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8" // Passando o mesmo padrão utf8 do nosso BD
+        ]
+    );
+
+    $stmt = $pdo->query("SELECT * FROM users LIMIT 3");
+    // fetch -> enquanto tiver resultado no fetch o while continuará o looping
+    // fetch(PDO::FETCH_ASSOC) -> Trazendo o resultado em uma array associativa
+    while($user = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        var_dump($user);
+    }
+
+} catch (PDOException $exception) {
+    var_dump($exception);
+}
 
 /*
  * [ conexão com singleton ] Conextar e obter um objeto PDO garantindo instância única.
