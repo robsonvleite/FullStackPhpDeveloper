@@ -16,7 +16,7 @@ use Source\Database\Connect;
 fullStackPHPClassSession("insert", __LINE__);
 
 $insert = "
-    INSERT INTO users (first_names, last_name, email, document)
+    INSERT INTO users (first_name, last_name, email, document)
     VALUES ('Ricardo', 'Barbosa', 'ricardo_baldrez@gmail.com', '182');
 ";
 
@@ -26,8 +26,8 @@ try {
     // var_dump(Connect::getInstance()->lastInsertId()); // Pegando o id da inserção
 
     // query -> comando mais exuto que retorna muito mais informações 
-    // $exec = Connect::getInstance()->query($insert);
-    // var_dump(Connect::getInstance()->lastInsertId());
+    $exec = Connect::getInstance()->query($insert);
+    var_dump(Connect::getInstance()->lastInsertId());
 
 } catch (PDOException $exception) {
     var_dump($exception);
@@ -72,3 +72,10 @@ try {
  * https://mariadb.com/kb/en/library/delete/
  */
 fullStackPHPClassSession("delete", __LINE__);
+
+try {
+    $exec = Connect::getInstance()->exec("DELETE FROM users WHERE id > '50'");
+    var_dump($exec);
+} catch (PDOException $exception) {
+    var_dump($exception);
+}
