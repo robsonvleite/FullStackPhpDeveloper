@@ -15,6 +15,23 @@ use Source\Database\Connect;
  */
 fullStackPHPClassSession("insert", __LINE__);
 
+$insert = "
+    INSERT INTO users (first_names, last_name, email, document)
+    VALUES ('Ricardo', 'Barbosa', 'ricardo_baldrez@gmail.com', '182');
+";
+
+try {
+    // exec -> comando rápido e simples retornando um boolean utilizando o minimo de recursos. Trazendo poucas info's no retorno
+    // $exec = Connect::getInstance()->exec($insert);
+    // var_dump(Connect::getInstance()->lastInsertId()); // Pegando o id da inserção
+
+    // query -> comando mais exuto que retorna muito mais informações 
+    $exec = Connect::getInstance()->query($insert);
+    var_dump(Connect::getInstance()->lastInsertId());
+
+} catch (PDOException $execption) {
+    var_dump($execption);
+}
 
 /*
  * [ select ] Ler/Consultar dados.
