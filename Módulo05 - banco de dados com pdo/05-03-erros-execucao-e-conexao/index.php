@@ -53,3 +53,19 @@ try {
  * http://br.phptherightway.com/pages/Design-Patterns.html
  */
 fullStackPHPClassSession("conexão com singleton", __LINE__);
+
+require __DIR__ . "/../source/autoload.php";
+
+use Source\Database\Connect;
+
+$pdo1 = Connect::getInstance();
+$pdo2 = Connect::getInstance();
+
+var_dump(
+    $pdo1,
+    $pdo2,
+    Connect::getInstance(),
+    Connect::getInstance()::getAvailableDrivers(), // Entendendo com quais BD's o meu PHP consegue trabalhar
+    Connect::getInstance()->getAttribute(PDO::ATTR_DRIVER_NAME) // Mostrando qual driver(BD estou usando)
+    
+);
