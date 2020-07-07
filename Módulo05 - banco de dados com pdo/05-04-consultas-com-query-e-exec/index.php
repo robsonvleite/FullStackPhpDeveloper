@@ -29,8 +29,8 @@ try {
     $exec = Connect::getInstance()->query($insert);
     var_dump(Connect::getInstance()->lastInsertId());
 
-} catch (PDOException $execption) {
-    var_dump($execption);
+} catch (PDOException $exception) {
+    var_dump($exception);
 }
 
 /*
@@ -39,6 +39,17 @@ try {
  */
 fullStackPHPClassSession("select", __LINE__);
 
+try {
+    $query = Connect::getInstance()->query("SELECT * FROM users LIMIT 3");
+
+    var_dump([
+        $query,
+        $query->rowCount(), // Quantas linhas/resultados forão retornadas
+        $query->fetchAll() // Traz todos os resultados buscados
+    ]);
+} catch (PDOException $exception) {
+    var_dump($exception);
+}
 
 /*
  * [ update ] Atualizar dados.
