@@ -11,6 +11,18 @@ use Source\Database\Connect;
  */
 fullStackPHPClassSession("fetch", __LINE__);
 
+$connect = Connect::getInstance();
+$read = $connect->query("SELECT * FROM users LIMIT 3");
+
+if(!$read->rowCount()) {
+    echo "<p class='trigger'>Não obteve resultados!</p>";
+} else {
+    var_dump($read->fetch());
+
+    while($user = $read->fetch()) {
+        var_dump($user);
+    }
+}
 
 /*
  * [ fetch all ] http://php.net/manual/pt_BR/pdostatement.fetchall.php
