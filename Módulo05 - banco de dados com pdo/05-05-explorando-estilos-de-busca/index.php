@@ -64,4 +64,28 @@ var_dump(
  */
 fullStackPHPClassSession("fetch styles", __LINE__);
 
+$read = $connect->query("SELECT * FROM users LIMIT 1");
+foreach ($read->fetchAll() as $user) {
+    var_dump($user, $user->first_name);
+}
 
+$read = $connect->query("SELECT * FROM users LIMIT 1");
+// $read->fetchAll(PDO::FETCH_NUM) -> Traz um array com os indices numéricos
+foreach ($read->fetchAll(PDO::FETCH_NUM) as $user) {
+    var_dump($user, $user[1]);
+}
+
+$read = $connect->query("SELECT * FROM users LIMIT 1");
+// $read->fetchAll(PDO::FETCH_ASSOC) -> Traz um array com os indices associativos ao nome real
+foreach ($read->fetchAll(PDO::FETCH_ASSOC) as $user) {
+    var_dump($user, $user['first_name']);
+}
+
+$read = $connect->query("SELECT * FROM users LIMIT 1");
+// $read->fetchAll(PDO::FETCH_CLASS, \Source\DataBase\Entity\UserEntity::class) -> O objeto não sendo de uma classe anônima, ele sendo um objeto de uma classe que representa a tabela na aplicação 
+foreach ($read->fetchAll(PDO::FETCH_CLASS, \Source\DataBase\Entity\UserEntity::class) as $user) {
+    /**
+     * @var \Source\Database\Entity\UserEntity $user
+     */
+    var_dump($user, $user->getFirst_name());
+}
