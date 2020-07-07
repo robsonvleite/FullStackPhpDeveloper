@@ -5,6 +5,7 @@ fullStackPHPClassName("05.05 - Explorando estilos de busca");
 require __DIR__ . "/../source/autoload.php";
 
 use Source\Database\Connect;
+use Source\Database\Entity\UserEntity;
 
 /*
  * [ fetch ] http://php.net/manual/pt_BR/pdostatement.fetch.php
@@ -48,6 +49,15 @@ foreach ($read->fetchAll() as $user) {
  */
 fullStackPHPClassSession("fetch save", __LINE__);
 
+// LIMIT 5,1 -> pule os 5 primeiros retornos e pegue o (OFFSET)1º após os pulos
+$read = $connect->query("SELECT * FROM users LIMIT 5,1");
+$result = $read->fetchAll();
+
+var_dump(
+    $read->fetchAll(),
+    $result,
+    $result
+);
 
 /*
  * [ fetch modes ] http://php.net/manual/pt_BR/pdostatement.fetch.php
