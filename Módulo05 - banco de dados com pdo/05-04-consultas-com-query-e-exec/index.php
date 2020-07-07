@@ -26,8 +26,8 @@ try {
     // var_dump(Connect::getInstance()->lastInsertId()); // Pegando o id da inserção
 
     // query -> comando mais exuto que retorna muito mais informações 
-    $exec = Connect::getInstance()->query($insert);
-    var_dump(Connect::getInstance()->lastInsertId());
+    // $exec = Connect::getInstance()->query($insert);
+    // var_dump(Connect::getInstance()->lastInsertId());
 
 } catch (PDOException $exception) {
     var_dump($exception);
@@ -57,6 +57,15 @@ try {
  */
 fullStackPHPClassSession("update", __LINE__);
 
+try {
+    $exec = Connect::getInstance()->exec(
+        "UPDATE users SET first_name = 'Kaue', last_name = 'Cardoso' WHERE id = '52'"
+    );
+
+    var_dump($exec);
+} catch (PDOException $exception) {
+    var_dump($exception);
+}
 
 /*
  * [ delete ] Deletar dados.
