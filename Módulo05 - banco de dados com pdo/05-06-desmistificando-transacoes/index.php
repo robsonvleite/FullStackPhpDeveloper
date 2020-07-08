@@ -22,3 +22,28 @@ use Source\Database\Connect;
  * persistir no banco de dados (Uma transação só tem sentido se houver gravação)
  */
 fullStackPHPClassSession("transaction", __LINE__);
+
+try {
+    $pdo = Connect::getInstance();
+    $pdo->beginTransaction(); // Abrindo transação
+
+    $pdo->query(
+        "INSERT INTO users (first_name, last_name, email, document)
+         VALUES ('Robson', 'vergueiro', 'cursos@upinside.com.br', '1641321')"
+    );
+
+    $userId = $pdo->lastInsertId();
+
+    $pdo->query(
+        "INSERT INTO users_address (user_id, street, number, complement)
+         VALUES ('{$userId}', 'Rua da Up', '3999', 'Sala 210')"
+    );
+
+    $pdo->commit(); // Fechando a transação e executando/salvando os dados realmente
+    echo "<p class='trigger accept'>cadastrado com sucesso!!!</p>";
+
+} catch (PDOException $exception) {
+    // Caso aconteça algum erro na transação à cima, descemos para esse bloco, damos um rollBack desalocando o processo da transação, assim 'voltando' ao original 
+    $pdo->rollBack();
+    var_dump($exception);
+}
