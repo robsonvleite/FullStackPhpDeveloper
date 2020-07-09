@@ -102,6 +102,22 @@ var_dump(
  */
 fullStackPHPClassSession("stmt execute array", __LINE__);
 
+$stmt = Connect::getInstance()->prepare(
+    "INSERT INTO users (first_name, last_name, email) VALUES (:first_name, :last_name, :email)"
+);
+
+$user = [
+    "first_name" => "Kaue",
+    "last_name" => "Cardoso",
+    "email" => "caue@upinside.com.br"
+];
+
+$stmt->execute($user);
+
+var_dump(
+    $stmt,
+    $stmt->rowCount()
+);
 
 /*
  * [ bind column ] http://php.net/manual/en/pdostatement.bindcolumn.php
