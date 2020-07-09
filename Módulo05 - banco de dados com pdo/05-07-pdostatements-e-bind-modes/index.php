@@ -6,11 +6,24 @@ require __DIR__ . "/../source/autoload.php";
 
 use Source\Database\Connect;
 
+// Prepare Statement -> São métodos que compõe rotinas que vão preparar a sua instrução SQL antes de executar no banco de dados, assim o PDO vai tratar os dados que serão inseridos, consultados e etc ... garantindo assim uma segurança maior
+
 /**
  * [ prepare ] http://php.net/manual/pt_BR/pdo.prepare.php
  */
 fullStackPHPClassSession("prepared statement", __LINE__);
 
+// Preparando para a execução da query
+$stmt = Connect::getInstance()->prepare("SELECT * FROM users LIMIT 1");
+// Executando
+$stmt->execute();
+
+var_dump(
+    $stmt,
+    $stmt->rowCount(),
+    $stmt->columnCount(),
+    $stmt->fetch()
+);
 
 /*
  * [ bind value ] http://php.net/manual/pt_BR/pdostatement.bindvalue.php
