@@ -123,3 +123,20 @@ var_dump(
  * [ bind column ] http://php.net/manual/en/pdostatement.bindcolumn.php
  */
 fullStackPHPClassSession("bind column", __LINE__);
+
+$stmt = Connect::getInstance()->prepare("SELECT * FROM users LIMIT 3");
+$stmt->execute();
+
+// Utilizando o índice do obj
+// $stmt->bindColumn(2, $nome);
+// $stmt->bindColumn(4, $email);
+
+// Utilizando o nome da coluna
+$stmt->bindColumn("first_name", $nome);
+$stmt->bindColumn("email", $email);
+
+
+while ($user = $stmt->fetch()) {
+    var_dump($user);
+    echo "O e-mail de {$nome} é {$email}";
+}
