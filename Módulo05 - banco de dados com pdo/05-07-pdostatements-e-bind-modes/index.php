@@ -78,6 +78,24 @@ if(Connect::getInstance()->lastInsertId() > 50) {
  */
 fullStackPHPClassSession("stmt bind param", __LINE__);
 
+// Diferente do bind value, o bind param não deixa passar o nome diretamente, ele fará a validação no execute() ... Só interpretará com variáveis
+$stmt = Connect::getInstance()->prepare(
+    "INSERT INTO users (first_name, last_name) VALUES (:first_name, :last_name)"
+);
+
+$name = "Gah";
+$lastName = "Morandi";
+
+$stmt->bindParam(":first_name", $name, PDO::PARAM_STR);
+$stmt->bindParam(":last_name", $lastName, PDO::PARAM_STR);
+
+$stmt->execute();
+
+var_dump(
+    $stmt,
+    $stmt->rowCount(),
+    Connect::getInstance()->lastInsertId()
+);
 
 /*
  * [ execute ] http://php.net/manual/pt_BR/pdostatement.execute.php
