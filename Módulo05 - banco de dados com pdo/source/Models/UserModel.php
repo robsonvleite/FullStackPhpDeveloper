@@ -54,9 +54,16 @@ class UserModel extends Model
     /**
      * Buscando todos os resultados
      */
-    public function all($limit = 30, $offset = 0)
+    public function all(int $limit = 30, int $offset = 0, string $columns = "*"): ?array
     {
+        $all = $this->read("SELECT {$columns} FROM " . self::$entity . " LIMIT :limit OFFSET :offset", "limit={$limit}&offset={$offset}");
 
+        if ($this->fail() || !$all->rowCount()) {
+            $this->message = "Sua consulta não retornou usuários!!!";
+            return null;
+        }
+
+        return $all->fetchAll(\PDO::FETCH_CLASS, __CLASS__);
     }
 
     /**

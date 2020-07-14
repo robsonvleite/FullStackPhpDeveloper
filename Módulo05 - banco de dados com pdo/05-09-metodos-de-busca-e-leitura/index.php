@@ -28,3 +28,11 @@ var_dump($user, "{$user->email}");
  */
 fullStackPHPClassSession("all", __LINE__);
 
+$allUsers = $model->all(5);
+
+/**
+ * @var \Source\Models\UserModel $user
+ */
+foreach ($allUsers as $user) {
+    var_dump($user);
+}
