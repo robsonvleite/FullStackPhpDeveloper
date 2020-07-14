@@ -9,6 +9,11 @@ require __DIR__ . "/../source/autoload.php";
  */
 fullStackPHPClassSession("load", __LINE__);
 
+$model = new \Source\Models\UserModel();
+$user = $model->load(1);
+
+var_dump($user, "{$user->first_name} {$user->last_name}");
+
 
 /*
  * [ find ] Por indexes da tabela (email)

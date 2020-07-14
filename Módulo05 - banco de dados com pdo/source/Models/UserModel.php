@@ -2,6 +2,7 @@
 
 namespace Source\Models;
 
+use DateTime;
 use Source\Database\Entity\UserEntity;
 
 class UserModel extends Model
@@ -23,9 +24,16 @@ class UserModel extends Model
     /**
      * Buscando um usuário pelo id
      */
-    public function load($id)
+    public function load(int $id, string $columns = "*"): ?UserModel
     {
+        $load = $this->read("SELECT {$columns} FROM " . self::$entity . " WHERE id = :id", "id={$id}");
         
+        if($this->fail() || !$load->rowCount()) {
+            $this->message = "Usuário não encontrado para o id informado!!!";
+            return null;
+        }
+
+        return $load->fetchObject(__CLASS__);
     }
 
     /**
