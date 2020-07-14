@@ -16,9 +16,14 @@ class UserModel extends Model
     /**
      * Ajuda a construir os dados necessários para poder cadastrar um novo usuário
      */
-    public function bootstrap()
+    public function bootstrap(string $firstName, string $lastName, string $email, string $document = null): ?UserModel
     {
-        
+        $this->first_name = $firstName;
+        $this->last_name = $lastName;
+        $this->email = $email;
+        $this->document = $document;
+
+        return $this;
     }
 
     /**
@@ -69,9 +74,35 @@ class UserModel extends Model
     /**
      * Responsável por cadastrar/salvar o novo usuário na base
      */
-    public function save()
+    public function save(): ?UserModel
     {
-    
+        if(!$this->required()) {
+            return null;
+        }
+
+        var_dump($this->first_name, $this->last_name);
+        /** User Update */
+        if (!empty($this->id)) {
+            $userId = $this->id;
+        }
+
+        /** User Create */
+        if(empty($this->id)) {
+            if($this->find($this->email)) {
+                $this->message = "O e-mail informado já está cadastrado!";
+                return null;
+            }
+
+            $userId = $this->create(self::$entity, $this->safe());
+            if($this->fail()) {
+                $this->message = "Erro ao cadastrar, verifique os dados";
+            }
+
+            $this->message = "Cadastro realizado com sucesso!";
+        }  
+
+        $this->data = $this->read("SELECT * FROM users WHERE id = :id", "id={$userId}")->fetch();
+        return $this;
     }
 
     /**
@@ -85,8 +116,18 @@ class UserModel extends Model
     /**
      * Diz quais campos o BD faz de obrigatório ser informado pelo usuário ao se cadastrar
      */
-    private function required()
+    private function required():bool
     {
-        
+        if(empty($this->first_name) || empty($this->last_name) || empty($this->email)) {
+            $this->message = "Os campos são obrigatórios";
+            return false;
+        }
+
+        if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            $this->message = "O e-mail não é válido";
+            return false;
+        }
+
+        return true;
     }
 }
