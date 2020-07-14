@@ -39,9 +39,16 @@ class UserModel extends Model
     /**
      * Buscando um usuário pelo email
      */
-    public function find($email)
+    public function find($email, string $columns = "*"): ?UserModel
     {
+        $load = $this->read("SELECT {$columns} FROM " . self::$entity . " WHERE email = :email", "email={$email}");
 
+        if ($this->fail() || !$load->rowCount()) {
+            $this->message = "Usuário não encontrado para o email informado!!!";
+            return null;
+        }
+
+        return $load->fetchObject(__CLASS__);
     }
 
     /**

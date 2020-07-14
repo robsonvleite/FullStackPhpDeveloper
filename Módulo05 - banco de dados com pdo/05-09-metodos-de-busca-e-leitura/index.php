@@ -14,12 +14,14 @@ $user = $model->load(1);
 
 var_dump($user, "{$user->first_name} {$user->last_name}");
 
-
 /*
  * [ find ] Por indexes da tabela (email)
  */
 fullStackPHPClassSession("find", __LINE__);
 
+$user = $model->find("eleno29@email.com.br");
+
+var_dump($user, "{$user->email}");
 
 /*
  * [ all ] Retorna diversos registros
