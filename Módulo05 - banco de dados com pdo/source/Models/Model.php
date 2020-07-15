@@ -4,8 +4,12 @@ namespace Source\Models;
 
 use Source\Database\Connect;
 
-// abstract - Não pode ser implementada por um obj e somente herdada por outras classes
-abstract class Model 
+/**
+ * Class Model
+ * @package Source\Models
+ * abstract - Não pode ser implementada por um obj e somente herdada por outras classes
+ */
+abstract class Model
 {
     /** @var object|null */
     protected $data;
@@ -16,51 +20,67 @@ abstract class Model
     /** @var string|null */
     protected $message;
 
-    // Sempre que atribuir a uma propriedade que não esteja acessível, vamos manipular e jogar na camada $data
+    /**
+     * @param $name
+     * @param $value
+     */
     public function __set($name, $value)
     {
-        if(empty($this->data)) {
+        if (empty($this->data)) {
             $this->data = new \stdClass();
         }
 
         $this->data->$name = $value;
     }
 
+    /**
+     * @param $name
+     * @return bool
+     */
     public function __isset($name)
     {
-        return $this->data->$name;
-    }
-
-    public function __get($name)
-    {
-        return ($this->data->$name ?? null);   
+        return isset($this->data->$name);
     }
 
     /**
-     * Get the value of data
-     */ 
+     * @param $name
+     * @return null
+     */
+    public function __get($name)
+    {
+        return ($this->data->$name ?? null);
+    }
+
+    /**
+     * @return null|object
+     */
     public function data(): ?object
     {
         return $this->data;
     }
 
     /**
-     * Get the value of fail
-     */ 
+     * @return \PDOException
+     */
     public function fail(): ?\PDOException
     {
         return $this->fail;
     }
 
     /**
-     * Get the value of message
-     */ 
+     * @return null|string
+     */
     public function message(): ?string
     {
         return $this->message;
     }
 
-    protected function create(string $entity, array $data)
+    /**
+     * @param string $entity
+     * @param array $data
+     * @return int|null
+     */
+    protected function create(string $entity, array $data): ?int
     {
         try {
             $columns = implode(", ", array_keys($data));
@@ -74,16 +94,18 @@ abstract class Model
             $this->fail = $exception;
             return null;
         }
-        
-        var_dump($entity, $data);
     }
 
+    /**
+     * @param string $select
+     * @param string|null $params
+     * @return null|\PDOStatement
+     */
     protected function read(string $select, string $params = null): ?\PDOStatement
     {
         try {
             $stmt = Connect::getInstance()->prepare($select);
-
-            if($params) {
+            if ($params) {
                 parse_str($params, $params);
                 foreach ($params as $key => $value) {
                     $type = (is_numeric($value) ? \PDO::PARAM_INT : \PDO::PARAM_STR);
@@ -93,6 +115,33 @@ abstract class Model
 
             $stmt->execute();
             return $stmt;
+        } catch (\PDOException $exception) {
+            $this->fail = $exception;
+            return null;
+        }
+    }
+
+    /**
+     * @param string $entity
+     * @param array $data
+     * @param string $terms
+     * @param string $params
+     * @return int|null
+     */
+    protected function update(string $entity, array $data, string $terms, string $params): ?int
+    {
+        try {
+            $dateSet = [];
+            foreach ($data as $bind => $value) {
+                $dateSet[] = "{$bind} = :{$bind}";
+            }
+            $dateSet = implode(", ", $dateSet);
+            parse_str($params, $params);
+
+            $stmt = Connect::getInstance()->prepare("UPDATE {$entity} SET {$dateSet} WHERE {$terms}");
+            $stmt->execute($this->filter(array_merge($data, $params)));
+
+            return ($stmt->rowCount() ?? 1);
 
         } catch (\PDOException $exception) {
             $this->fail = $exception;
@@ -100,37 +149,39 @@ abstract class Model
         }
     }
 
-    protected function update()
+    /**
+     * @param string $entity
+     * @param string $terms
+     * @param string $params
+     * @return int|null
+     */
+    protected function delete(string $entity, string $terms, string $params): ?int
     {
-
-    }
-
-    protected function delete()
-    {
-
+        
     }
 
     /**
-     * Cuida dos campos que não podem ser manipulados
+     * @return array|null
      */
     protected function safe(): ?array
     {
         $safe = (array)$this->data;
-        /** Removendo os indices que não podem ser manipulados  */
         foreach (static::$safe as $unset) {
             unset($safe[$unset]);
         }
-        
         return $safe;
     }
 
-    protected function filter(array $data): ?array
+    /**
+     * @param array $data
+     * @return array|null
+     */
+    private function filter(array $data): ?array
     {
         $filter = [];
         foreach ($data as $key => $value) {
-            $filter[$key] = (is_numeric($value) ? null : filter_var($value, FILTER_SANITIZE_SPECIAL_CHARS));
+            $filter[$key] = (is_null($value) ? null : filter_var($value, FILTER_SANITIZE_SPECIAL_CHARS));
         }
-
         return $filter;
     }
 }
