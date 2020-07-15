@@ -20,7 +20,7 @@ if($user != $model->load(4)) {
     $user->save();
     echo "<p class='trigger warning'>Atualizado!</p>";
 } else {
-    echo "<p class='trigger warning'>Já atualizado!</p>";
+    echo "<p class='trigger accept'>Já atualizado!</p>";
 }
 
 var_dump($user);
