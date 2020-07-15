@@ -76,6 +76,7 @@ class UserModel extends Model
      * @return array|null
      * 
      * Buscando todos os resultados
+     * offset -> retorna os registros acima do anunciado
      */
     public function all(int $limit = 30, int $offset = 0, string $columns = "*"): ?array
     {

@@ -16,8 +16,8 @@ $model = new UserModel();
 
 $user = $model->load(159);
 
-if($user) {
-    $user->destroy(); 
+if ($user) {
+    $user->destroy();
 }
 
 var_dump($user);
@@ -27,4 +27,12 @@ var_dump($user);
  */
 fullStackPHPClassSession("model destroy", __LINE__);
 
+$list = $model->all(10, 38);
 
+if ($list) {
+    /** @var UserModel $user */
+    foreach ($list as $user) {
+        var_dump($user);
+        $user->destroy();
+    }
+}
