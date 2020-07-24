@@ -61,6 +61,11 @@ class Message
         return $this;
     }
 
+    public function json(): string
+    {
+        return json_encode(['error' => $this->getText()]);
+    }
+
     public function render(): string
     {
         return "<div class='" . CONF_MESSAGE_CLASS . " {$this->getType()}'>{$this->getText()}</div>";

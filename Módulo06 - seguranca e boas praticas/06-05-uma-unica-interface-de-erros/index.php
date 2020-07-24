@@ -35,6 +35,7 @@ echo $message->error("Mensagem renderizada!");
  */
 fullStackPHPClassSession("json message", __LINE__);
 
+echo $message->info($message->error("Essa é uma mensagem renderizada")->json());
 
 /*
  * [ flash message ] Uma mensagem via sessão para refresh de navegação
