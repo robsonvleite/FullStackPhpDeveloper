@@ -18,6 +18,17 @@ var_dump($message, get_class_methods($message));
  */
 fullStackPHPClassSession("message types", __LINE__);
 
+$error = $message->success("Essa é uma mensagem de sucesso!");
+var_dump([
+    $message->getText(),
+    $message->getType(),
+    $message->render()
+]);
+
+echo $message->info("Mensagem renderizada!");
+echo $message->success("Mensagem renderizada!");
+echo $message->warning("Mensagem renderizada!");
+echo $message->error("Mensagem renderizada!");
 
 /*
  * [ json message ] Mudando o padrão de retorno
