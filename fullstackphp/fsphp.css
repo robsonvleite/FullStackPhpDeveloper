@@ -80,6 +80,12 @@ p {
     font-size: 0.75em;
 }
 
+.trigger.info {
+    color: var(--blue);
+    border-color: var(--blue);
+}
+
+.trigger.success,
 .trigger.accept {
     color: var(--green);
     border-color: var(--green);

@@ -3,12 +3,15 @@ require __DIR__ . '/../../fullstackphp/fsphp.php';
 fullStackPHPClassName("06.05 - Uma única interface de erros");
 
 require __DIR__ . "/../source/autoload.php";
+use \Source\Core\Message;
 
 /*
  * [ message class ] Uma classe padrão para reportar ao usuário
  */
 fullStackPHPClassSession("message class", __LINE__);
 
+$message = new Message();
+var_dump($message, get_class_methods($message));
 
 /*
  * [ message types ] Métodos para cada tipo de mensagem
