@@ -42,4 +42,14 @@ echo $message->info($message->error("Essa é uma mensagem renderizada")->json())
  */
 fullStackPHPClassSession("flash message", __LINE__);
 
+$session = new \Source\Core\Session();
 
+$message->success("Mensagem flash!")->flash();
+
+if($flash = $session->flash()) {
+    echo $flash;
+    var_dump([
+        $flash->getText(),
+        $flash->getType()
+    ]);
+}

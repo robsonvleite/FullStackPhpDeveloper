@@ -66,6 +66,11 @@ class Message
         return json_encode(['error' => $this->getText()]);
     }
 
+    public function flash(): void // void pois não terá retorno e sim armazenamento
+    {
+        (new Session())->set("flash", $this);
+    }
+
     public function render(): string
     {
         return "<div class='" . CONF_MESSAGE_CLASS . " {$this->getType()}'>{$this->getText()}</div>";
