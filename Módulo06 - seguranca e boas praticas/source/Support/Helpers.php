@@ -1,16 +1,41 @@
 <?php
 
 /**
+ * ####################
+ * ###   VALIDATE   ###
+ * ####################
+ */
+
+
+/**
+ * @param string $email
+ * @return bool
+ */
+function is_email(string $email): bool
+{
+    return filter_var($email, FILTER_VALIDATE_EMAIL);
+}
+
+/**
+ * @param string $password
+ * @return bool
+ */
+function is_password(string $password): bool
+{
+    return (mb_strlen($password) >= CONF_PASSWD_MIN_LEN && mb_strlen($password) <= CONF_PASSWD_MAX_LEN ? true : false);
+}
+
+/**
  * ##################
  * ###   STRING   ###
  * ##################
  */
 
+
 /**
  * @param string $string
  * @return string
  */
-
 function str_slug(string $string): string
 {
     $string = filter_var(mb_strtolower($string), FILTER_SANITIZE_STRIPPED); // Retirando todos os scripts que possam vir com a nossa string
@@ -25,6 +50,10 @@ function str_slug(string $string): string
     return $slug;
 }
 
+/**
+ * @param string $string
+ * @return string
+ */
 function str_studly_case(string $string): string
 {
     $string = str_slug($string);
@@ -33,17 +62,31 @@ function str_studly_case(string $string): string
     return $studlyCase;
 }
 
+/**
+ * @param string $string
+ * @return string
+ */
 function str_camel_case(string $string): string
 {
     return lcfirst(str_studly_case($string)); // lcfirst — Torna minúsculo o primeiro caractere de uma string
 
 }
 
+/**
+ * @param string $string
+ * @return string
+ */
 function str_title(string $string): string
 {
     return mb_convert_case(filter_var($string, FILTER_SANITIZE_SPECIAL_CHARS), MB_CASE_TITLE);
 }
 
+/**
+ * @param string $string
+ * @param int $limit
+ * @param string $pointer
+ * @return string
+ */
 function str_limit_words(string $string, int $limit, string $pointer = "..."): string
 {
     $string = trim(filter_var($string, FILTER_SANITIZE_SPECIAL_CHARS));
@@ -58,6 +101,12 @@ function str_limit_words(string $string, int $limit, string $pointer = "..."): s
     return "{$words}{$pointer}";
 }
 
+/**
+ * @param string $string
+ * @param int $limit
+ * @param string $pointer
+ * @return string
+ */
 function str_limit_chars(string $string, int $limit, string $pointer = "...")
 {
     $string = trim(filter_var($string, FILTER_SANITIZE_SPECIAL_CHARS));
