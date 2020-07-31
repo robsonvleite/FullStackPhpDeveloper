@@ -25,6 +25,7 @@ function is_password(string $password): bool
     return (mb_strlen($password) >= CONF_PASSWD_MIN_LEN && mb_strlen($password) <= CONF_PASSWD_MAX_LEN ? true : false);
 }
 
+
 /**
  * ##################
  * ###   STRING   ###
