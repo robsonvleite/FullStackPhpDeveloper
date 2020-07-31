@@ -60,3 +60,12 @@ if(!$login) {
  * [ password handler ] Sintetizando uso de senhas
  */
 fullStackPHPClassSession("password handler", __LINE__);
+
+$pass = "182";
+
+var_dump([
+    $pass,
+    $passwd = passwd($pass),
+    passwd_verify($pass, $passwd),
+    passwd_rehash($passwd)
+]);
