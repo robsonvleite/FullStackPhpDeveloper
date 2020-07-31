@@ -23,6 +23,13 @@ var_dump([
  */
 fullStackPHPClassSession("password saving", __LINE__);
 
+$user = (new \Source\Models\User())->load(10);
+$user->password = $passwd;
+$user->save();
+
+var_dump(password_verify(12345, $user->password));
+
+var_dump($user);
 
 /*
  * [ password verify ] Rotina de vetificação de senha
