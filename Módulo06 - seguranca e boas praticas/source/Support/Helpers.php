@@ -117,3 +117,38 @@ function str_limit_chars(string $string, int $limit, string $pointer = "...")
     $chars = mb_substr($string, 0, mb_strrpos(mb_substr($string, 0, $limit), " "));
     return "{$chars}{$pointer}";
 }
+
+
+/**
+ * ##################
+ * ###   STRING   ###
+ * ##################
+ */
+
+
+/**
+ * @param string $path
+ * @return string
+ */
+function url(string $path): string
+{
+    return CONF_URL_BASE . "/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
+}
+
+/**
+ * @param string $url
+ * @return void
+ */
+function redirect(string $url): void
+{
+    // Informando o redirecionamento aos motores
+    header("HTTP/1.1 302 Redirect");
+    if(filter_var($url, FILTER_VALIDATE_URL)) {
+        header("Location: {$url}");
+        exit;
+    }
+
+    $location = url($url);
+    header("Location: {$location}");
+    exit;
+}

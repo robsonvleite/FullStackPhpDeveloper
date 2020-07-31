@@ -33,6 +33,14 @@ if(!is_password($passwd)) {
  */
 fullStackPHPClassSession("navigation", __LINE__);
 
+var_dump([
+    url("/blog/titulo-do-artigo"),
+    url("blog/titulo-do-artigo")
+]);
+
+if(empty($_GET)) {
+    redirect("/ricardo/show");
+}
 
 /*
  * [ class triggers ] São gatilhos globais para criação de objetos
