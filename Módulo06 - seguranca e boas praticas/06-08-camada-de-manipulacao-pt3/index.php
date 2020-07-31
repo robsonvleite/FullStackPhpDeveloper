@@ -47,4 +47,10 @@ if(empty($_GET)) {
  */
 fullStackPHPClassSession("triggers", __LINE__);
 
+var_dump(user()->load(1));
 
+echo message()->warning("Isso é um AVISO!!!");
+echo message()->error("Isso é um ERRO!!!");
+
+session()->set("user", user()->load(3));
+var_dump(session()->all());

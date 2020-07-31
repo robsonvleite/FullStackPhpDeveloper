@@ -152,3 +152,51 @@ function redirect(string $url): void
     header("Location: {$location}");
     exit;
 }
+
+
+/**
+ * #################
+ * ###   CORE   ###
+ * #################
+ */
+
+
+/**
+ * @return PDO
+ */
+function db(): PDO
+{
+    return \Source\Core\Connect::getInstance();
+}
+
+/**
+ * @return \Source\Core\Message
+ */
+function message(): \Source\Core\Message
+{
+    return new \Source\Core\Message();
+}
+
+/**
+ * @return \Source\Core\Session
+ */
+function session(): \Source\Core\Session
+{
+    return new \Source\Core\Session();
+}
+
+
+/**
+ * #################
+ * ###   MODEL   ###
+ * #################
+ */
+
+
+/**
+ * @return \Source\Models\User
+ */
+function user(): \Source\Models\User
+{
+    return new \Source\Models\User();
+}
