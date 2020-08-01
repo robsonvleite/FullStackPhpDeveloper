@@ -10,6 +10,13 @@ require __DIR__ . "/../source/autoload.php";
  */
 fullStackPHPClassSession("xxs", __LINE__);
 
+$post = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
+if($post) {
+    $data = (object)$post;
+    var_dump($post);
+
+    echo $data->first_name;
+}
 
 /*
  * [ CSRF ] Cross-Site Request Forgery
