@@ -24,7 +24,7 @@ class Session
 
     public function __isset($name)
     {
-        $this->has($name);
+        return $this->has($name);
     }
 
     // Retornando/Obtendo a sessão
@@ -81,5 +81,13 @@ class Session
         }
 
         return null;
+    }
+
+    /**
+     * CSRF TOKEN
+     */
+    public function csrf(): void
+    {
+        $_SESSION['csrf_token'] = base64_encode(random_bytes(20));
     }
 }

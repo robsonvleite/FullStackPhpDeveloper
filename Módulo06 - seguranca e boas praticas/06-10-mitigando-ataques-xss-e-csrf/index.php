@@ -24,6 +24,11 @@ if($post) {
  */
 fullStackPHPClassSession("csrf", __LINE__);
 
+if($_REQUEST && !csrf_verify($_REQUEST)) {
+    var_dump("CSRF bloqued");
+} else {
+    var_dump($_REQUEST);
+}
 
 /*
  * [ form ]
